@@ -1,3 +1,3 @@
 # j2wicee.github.io
 
-I am editing the desktop file as a test
+I am Joshua Evans and this is my ITIS 3135 GitHub Pages!
