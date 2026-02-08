@@ -51,3 +51,11 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
+a {
+  color: #5f7a8a;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+a:hover {
+  text-decoration: underline;
+}
