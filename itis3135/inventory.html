@@ -9,12 +9,71 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
       rel="stylesheet"
     />
+    <script src="scripts/form.js"></script>
   </head>
   <body>
     <div data-include="components/header.html"></div>
     <main>
-      <h2>Inventory</h2>
-      <p>This is a placeholder for the inventory content</p>
+      <h2>Capable Mouse Workshop Inventory</h2>
+
+      <section class="inventory-form">
+        <h3>Add New Item</h3>
+
+        <form>
+          <label for="item-name">Item Name:</label>
+          <input type="text" id="item-name" name="item-name" required />
+
+          <label for="item-type">Category:</label>
+          <input type="text" id="item-type" name="item-type" />
+
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" name="quantity" />
+
+          <button type="submit" class="btn">Add Item</button>
+        </form>
+      </section>
+
+      <section class="inventory-list">
+        <h3>Current Inventory</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Category</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+
+          <tbody id="inventory-table">
+            <tr>
+              <td>Cheese Powered CPU</td>
+              <td>Hardware</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Nano Coding Laptop</td>
+              <td>Computers</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Debugging Toolkit</td>
+              <td>Tools</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>Wireless Crumb Tracker</td>
+              <td>Devices</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>AI Cheese Analyzer</td>
+              <td>AI Equipment</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </main>
     <div data-include="components/footer.html"></div>
     <script src="scripts/include.min.js"></script>

@@ -85,3 +85,25 @@ a:hover {
     transform 0.5s ease,
     box-shadow 0.5s ease;
 }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+th {
+  background-color: #e8ded4;
+}
+.btn {
+  background-color: #3b2f2a;
+  color: white;
+  border: none;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 8%;
+}
