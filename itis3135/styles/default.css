@@ -66,6 +66,7 @@ a:hover {
   justify-content: center;
 }
 .card {
+  box-sizing: border-box;
   width: 250px;
   border: 1px solid #ccc;
   border-radius: 10px;
