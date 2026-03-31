@@ -1,0 +1,393 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction Form</title>
+    <link rel="stylesheet" href="/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <div data-include="components/header.html"></div>
+
+  <body>
+    <main>
+      <h2>Introduction Form</h2>
+      <h3>Please fill out the form below:</h3>
+      <form id="intro-form">
+        <fieldset>
+          <legend>Name</legend>
+          <label>
+            First Name <span style="color: red">*</span>
+            <input
+              type="text"
+              id="first-name"
+              value="Joshua"
+              placeholder="First Name"
+              required
+            />
+          </label>
+          <label>Middle Name / Initial (optional)</label>
+          <input
+            type="text"
+            id="middle-name"
+            placeholder="Middle Name / Initial"
+          />
+          <label>
+            Nickname / Preferred Name (optional)
+            <input
+              type="text"
+              id="nickname"
+              value=""
+              placeholder="Nickname or preferred name"
+            />
+          </label>
+          <label>
+            Last Name <span style="color: red">*</span>
+            <input
+              type="text"
+              id="last-name"
+              value="Evans"
+              placeholder="Last Name"
+              required
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Acknowledgment</legend>
+          <label>
+            Acknowledgment Statement <span style="color: red">*</span>
+            <input
+              type="text"
+              id="ack-statement"
+              value="I affirm that I have followed the academic integrity policy for this course."
+              placeholder="Acknowledgment statement"
+              required
+            />
+          </label>
+          <label>
+            Acknowledgment Date <span style="color: red">*</span>
+            <input type="date" id="ack-date" value="2025-08-25" required />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Mascot</legend>
+          <label>
+            Mascot Adjective <span style="color: red">*</span>
+            <input
+              type="text"
+              id="mascot-adj"
+              value="Landing"
+              placeholder="e.g. Mighty"
+              required
+            />
+          </label>
+          <label>
+            Mascot Animal <span style="color: red">*</span>
+            <input
+              type="text"
+              id="mascot-animal"
+              value="Page"
+              placeholder="e.g. Niner"
+              required
+            />
+          </label>
+          <label>
+            Divider Symbol <span style="color: red">*</span>
+            <input
+              type="text"
+              id="divider"
+              value="~"
+              placeholder="e.g. ~, |, ♥️"
+              required
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Picture</legend>
+          <label>
+            Upload Your Picture (optional — defaults to my image)
+            <input type="file" id="picture-file" accept="image/*" />
+          </label>
+          <label>
+            Picture Caption <span style="color: red">*</span>
+            <input
+              type="text"
+              id="picture-caption"
+              value="AI developed image of me using an input image."
+              placeholder="Caption for your picture"
+              required
+            />
+          </label>
+          <input type="hidden" id="picture-src" value="images/headshot.PNG" />
+        </fieldset>
+        <fieldset>
+          <legend>Personal Statement</legend>
+          <label>
+            Personal Statement <span style="color: red">*</span>
+            <textarea
+              id="personal-statement"
+              rows="3"
+              placeholder="Write a short personal statement..."
+              required
+            >
+      I am a junior at UNC Charlotte studying Computer Science with a focus in Software Engineering.
+      I enjoy developing web applications, both frontend and backend, as well as mobile apps.</textarea
+            >
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Background Bullets</legend>
+          <label>
+            Personal Background <span style="color: red">*</span>
+            <textarea
+              id="personal-bg"
+              rows="2"
+              placeholder="Personal background..."
+              required
+            >
+      I am currently 21 years old, from Pinehurst, NC. I enjoy playing video games, cooking, and playing basketball at UREC.</textarea
+            >
+          </label>
+          <label>
+            Professional Background <span style="color: red">*</span>
+            <textarea
+              id="professional-bg"
+              rows="2"
+              placeholder="Professional background..."
+              required
+            >
+      I currently work a retail job, but during the summers I do freelance development work with my friend.</textarea
+            >
+          </label>
+          <label>
+            Academic Background <span style="color: red">*</span>
+            <textarea
+              id="academic-bg"
+              rows="3"
+              placeholder="Academic background..."
+              required
+            >
+      I am currently a junior here at UNCC studying computer science with a concentration in Software Engineering.
+      I transferred here from NC State University this fall, so this is only my second semester here, and still trying to get accustomed to everything Charlotte has to offer.</textarea
+            >
+          </label>
+          <label>
+            Background in this Subject <span style="color: red">*</span>
+            <textarea
+              id="subject-bg"
+              rows="2"
+              placeholder="Background in this subject..."
+              required
+            >
+      I have experience in this subject, but it is all self-taught and learned through building real-world projects.
+      I took this course to gain a deeper understanding of concepts I already knew.</textarea
+            >
+          </label>
+          <label>
+            Primary Work Computer <span style="color: red">*</span>
+            <textarea
+              id="primary-computer"
+              rows="2"
+              placeholder="Primary work computer..."
+              required
+            >
+      I split a lot of my work based on my location. If I am home, then I will do my work on the Windows PC that I built, and if I am in class, I have a MacBook Air.</textarea
+            >
+          </label>
+          <label>
+            Secondary Work Computer <span style="color: red">*</span>
+            <textarea
+              id="secondary-computer"
+              rows="2"
+              placeholder="Secondary work computer..."
+              required
+            >
+      The backup will be the computer that I am not currently working with. I have all of my files shared between the two.</textarea
+            >
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Courses I'm Taking &amp; Why</legend>
+          <div id="courses-container">
+            <!-- Courses injected by JS -->
+          </div>
+          <button type="button" id="add-course-btn">+ Add Course</button>
+        </fieldset>
+        <!-- Quote -->
+        <fieldset>
+          <legend>Quote</legend>
+          <label>
+            Quote <span style="color: red">*</span>
+            <input
+              type="text"
+              id="quote"
+              value="Who decided that?"
+              placeholder="Your favorite quote"
+              required
+            />
+          </label>
+          <label>
+            Quote Author <span style="color: red">*</span>
+            <input
+              type="text"
+              id="quote-author"
+              value="Lion Sin of Pride, Escanor"
+              placeholder="Author of the quote"
+              required
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Optional Fields</legend>
+          <label>
+            Funny/Interesting Thing (optional)
+            <input
+              type="text"
+              id="funny-thing"
+              value="I just transferred from NC State"
+              placeholder="Something funny or interesting about you"
+            />
+          </label>
+          <label>
+            Something I'd Like to Share (optional)
+            <input
+              type="text"
+              id="share-thing"
+              value="I am ¼ Puerto Rican"
+              placeholder="Something you'd like to share"
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <legend>Links</legend>
+          <label
+            >Link 1 Name <span style="color: red">*</span>
+            <input
+              type="text"
+              id="link1-name"
+              value="ITIS 3135"
+              placeholder="e.g. GitHub"
+              required
+            />
+          </label>
+          <label
+            >Link 1 URL <span style="color: red">*</span>
+            <input
+              type="url"
+              id="link1-url"
+              value="https://j2wicee.github.io/itis3135/index.html"
+              placeholder="https://..."
+              required
+            />
+          </label>
+          <label
+            >Link 2 Name <span style="color: red">*</span>
+            <input
+              type="text"
+              id="link2-name"
+              value="GitHub"
+              placeholder="e.g. GitHub"
+              required
+            />
+          </label>
+          <label
+            >Link 2 URL <span style="color: red">*</span>
+            <input
+              type="url"
+              id="link2-url"
+              value="https://github.com/j2wicee"
+              placeholder="https://..."
+              required
+            />
+          </label>
+          <label
+            >Link 3 Name <span style="color: red">*</span>
+            <input
+              type="text"
+              id="link3-name"
+              value="CLT Web"
+              placeholder="e.g. CLT Website"
+              required
+            />
+          </label>
+          <label
+            >Link 3 URL <span style="color: red">*</span>
+            <input
+              type="url"
+              id="link3-url"
+              value="https://webpages.charlotte.edu/jevan138/"
+              placeholder="https://..."
+              required
+            />
+          </label>
+          <label
+            >Link 4 Name <span style="color: red">*</span>
+            <input
+              type="text"
+              id="link4-name"
+              value="Github.io"
+              placeholder="e.g. Github.io page"
+              required
+            />
+          </label>
+          <label
+            >Link 4 URL <span style="color: red">*</span>
+            <input
+              type="url"
+              id="link4-url"
+              value="https://j2wicee.github.io"
+              placeholder="https://..."
+              required
+            />
+          </label>
+          <label
+            >Link 5 Name <span style="color: red">*</span>
+            <input
+              type="text"
+              id="link5-name"
+              value="LinkedIn"
+              placeholder="e.g. LinkedIn"
+              required
+            />
+          </label>
+          <label
+            >Link 5 URL <span style="color: red">*</span>
+            <input
+              type="url"
+              id="link5-url"
+              value="https://www.linkedin.com/in/joshua-evans-a1b936340/"
+              placeholder="https://..."
+              required
+            />
+          </label>
+        </fieldset>
+        <div class="button-row">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+          <button type="button" id="clear-btn">Clear</button>
+        </div>
+      </form>
+      <div id="result">
+        <h3 id="result-heading"></h3>
+        <figure>
+          <img id="result-img" src="" alt="" />
+          <figcaption><em id="result-caption"></em></figcaption>
+        </figure>
+        <p id="result-statement"></p>
+        <ul id="result-bullets"></ul>
+        <blockquote>
+          <p id="result-quote"></p>
+          <cite id="result-cite"></cite>
+        </blockquote>
+        <ul id="result-links"></ul>
+        <p><button type="button" id="reset-result-btn">Start Over</button></p>
+      </div>
+    </main>
+  </body>
+
+  <div data-include="components/footer.html"></div>
+  <script src="scripts/include.min.js"></script>
+  <script src="scripts/introduction.js"></script>
+</html>

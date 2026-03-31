@@ -47,3 +47,112 @@ ul {
 li {
   margin-bottom: 0.5em;
 }
+/* ── Form inputs inherit page style ── */
+input[type="text"],
+input[type="date"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 6px 8px;
+  box-sizing: border-box;
+  font-family: "Libre Baskerville", serif;
+  font-size: 0.95em;
+  border: 1px solid #c2a97e;
+  border-radius: 4px;
+  background-color: antiquewhite;
+  color: #4b371c;
+}
+input[type="file"] {
+  font-family: "Libre Baskerville", serif;
+  font-size: 0.9em;
+  color: #4b371c;
+}
+fieldset {
+  border: 1px solid #c2a97e;
+  border-radius: 5px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+}
+legend {
+  font-family: "Oswald", sans-serif;
+  color: #4b371c;
+  font-size: 1.05em;
+  padding: 0 4px;
+}
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+  color: #4b371c;
+}
+.button-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+button {
+  font-family: "Libre Baskerville", serif;
+  padding: 8px 16px;
+  background-color: #4b371c;
+  color: antiquewhite;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+button:hover {
+  background-color: #808000;
+}
+.delete-course-btn {
+  background-color: #8a3030;
+  padding: 4px 10px;
+  font-size: 0.85em;
+  margin-top: 6px;
+}
+.delete-course-btn:hover {
+  background-color: #a04040;
+}
+.course-entry {
+  border: 1px solid #c2a97e;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f5efe6;
+}
+
+#result {
+  display: none;
+}
+#result img {
+  width: 300px;
+  height: 400px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+#result img:hover {
+  box-shadow: 6px 6px 14px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+#result a {
+  color: #808000;
+  text-decoration: underline;
+}
+#result a:hover {
+  color: #556b2f;
+}
+
+#result-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
