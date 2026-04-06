@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Overview</title>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div data-include="components/header.html"></div>
+    <main>
+      <h2>Project Overview</h2>
+      <section class="project-section">
+        <h3>1. Project Overview</h3>
+        <h4>Application &amp; Purpose</h4>
+        <p>
+          This project involves designing and developing a professional website
+          for <strong>Abstract Garage &amp; Customs</strong>, an automotive
+          customization and detailing business based in Aberdeen, NC. The
+          website will serve as the business's primary online presence,
+          showcasing services, completed work, and contact information. Its
+          purpose is to improve the shop's visibility, establish credibility
+          with potential customers, and provide an easy way for clients to
+          inquire about services, replacing the current lack of a dedicated,
+          branded web presence.
+        </p>
+        <h4>Intended Audience</h4>
+        <ul>
+          <li>
+            <strong>Prospective Customers</strong> - individuals seeking 1 on 1
+            automotive work, or modifications in the Aberdeen area who discover
+            the shop through search engines or referrals.
+          </li>
+          <li>
+            <strong>Returning Customers</strong> - existing customers looking to
+            browse recent work, confirm services offered, or reach out for
+            follow-up inquiries.
+          </li>
+          <li>
+            <strong>Car Enthusiasts</strong> - hobbyists and enthusiasts who may
+            share or discover the gallery and want to connect with the shop
+            community.
+          </li>
+          <li>
+            <strong>Business owner / admin</strong> - the client, who needs the
+            site to accurately and professionally represent the brand.
+          </li>
+        </ul>
+
+        <h4>Overview of Content</h4>
+        <ul>
+          <li>
+            Home page introducing the shop, its identity, and featured work.
+          </li>
+          <li>
+            Services page detailing offerings (engine work, A/C, brakes, etc.)
+          </li>
+          <li>
+            Gallery page showcasing completed builds and custom work with
+            interactive image viewing.
+          </li>
+          <li>About page covering the shop's story, values, and the team.</li>
+          <li>
+            Contact page with a validated inquiry form and embedded Google Map.
+          </li>
+        </ul>
+      </section>
+      <section class="project-section">
+        <h3>2. Client Information</h3>
+        <dl class="client-info-grid">
+          <dt>Name</dt>
+          <dd>Joshua Evans Sr.</dd>
+
+          <dt>Business</dt>
+          <dd>Abstract Garage &amp; Customs</dd>
+
+          <dt>Location</dt>
+          <dd>Aberdeen, NC</dd>
+
+          <dt>Email</dt>
+          <dd>[Private]</dd>
+
+          <dt>Phone</dt>
+          <dd>[Private]</dd>
+        </dl>
+      </section>
+      <section class="project-section">
+        <h3>3. Wireframe</h3>
+        <p>
+          The wireframe below illustrates the default page layout that will be
+          used consistently across the Abstract Garage &amp; Customs website,
+          including the header, navigation bar, main content area, and footer
+          structure.
+        </p>
+        <figure>
+          <div class="wireframe">
+            <img
+              src="images/wireframe.png"
+              alt="Wireframe of Abstract Garage & Customs website layout"
+            />
+          </div>
+          <figcaption>
+            Wireframe of Abstract Garage &amp; Customs website layout.
+            <a
+              href="https://drive.google.com/file/d/1MVb6GHSAXPyco1CoeZTQLQAqesaA8dHu/view?usp=drive_link"
+              target="_blank"
+              >View Wireframe</a
+            >
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="project-section">
+        <h3>4. Site Map</h3>
+        <p>
+          The site map below outlines the five pages of the Abstract Garage
+          &amp; Customs website and how they are connected through the global
+          navigation bar.
+        </p>
+        <figure>
+          <div class="sitemap">
+            <img
+              src="images/sitemap.png"
+              alt="Site map of Abstract Garage & Customs website structure"
+            />
+          </div>
+          <figcaption>
+            Figure 2: Site map for Abstract Garage &amp; Customs showing all
+            pages and navigation paths.
+            <a
+              href="https://drive.google.com/file/d/1XbRu9d0P4nZ1tdEc-EgMMu_chWlEwTHA/view?usp=drive_link"
+              target="_blank"
+              >View full site map in draw.io (Google Drive)</a
+            >
+          </figcaption>
+        </figure>
+      </section>
+      <section class="project-section">
+        <h3>5. Page Design</h3>
+
+        <h4>Page 1: Home (<code>index.html</code>)</h4>
+        <table class="page-design">
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Purpose</td>
+            <td>
+              Introduce the shop, establish brand identity, and direct users to
+              key sections of the site.
+            </td>
+          </tr>
+          <tr>
+            <td>Audience</td>
+            <td>
+              All visitors — first-time and returning customers, car
+              enthusiasts.
+            </td>
+          </tr>
+          <tr>
+            <td>Content</td>
+            <td>
+              Hero section with shop name and tagline; brief introduction
+              paragraph; featured/recent work highlights (3 cards);
+              call-to-action buttons linking to Gallery and Contact pages.
+            </td>
+          </tr>
+          <tr>
+            <td>User Data Entry?</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Validations</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Buttons / Links</td>
+            <td>
+              "View Our Work" button → Gallery; "Get in Touch" button → Contact;
+              full global navigation bar.
+            </td>
+          </tr>
+          <tr>
+            <td>Actions</td>
+            <td>
+              Featured work cards are hover-interactive (CSS scale transform);
+              clicking a card navigates to the Gallery page.
+            </td>
+          </tr>
+          <tr>
+            <td>Notes</td>
+            <td>
+              Will include a jQuery UI tooltip on the featured work cards
+              displaying a short caption on hover.
+            </td>
+          </tr>
+        </table>
+
+        <h4>Page 2: Services (<code>services.html</code>)</h4>
+        <table class="page-design">
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Purpose</td>
+            <td>
+              Detail all services the shop offers with descriptions and pricing
+              tiers.
+            </td>
+          </tr>
+          <tr>
+            <td>Audience</td>
+            <td>
+              Prospective customers evaluating whether Abstract Garage meets
+              their needs.
+            </td>
+          </tr>
+          <tr>
+            <td>Content</td>
+            <td>
+              Organized list/grid of services: brake repair, engine diagnostics,
+              A/C service, oil changes, suspension work, etc. Each service has a
+              name, description, and starting price estimate.
+            </td>
+          </tr>
+          <tr>
+            <td>User Data Entry?</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Validations</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Buttons / Links</td>
+            <td>
+              "Book a Consultation" button → Contact page. Navigation bar
+              present.
+            </td>
+          </tr>
+          <tr>
+            <td>Actions</td>
+            <td>
+              Accordion-style jQuery UI widget to expand/collapse service
+              descriptions, keeping the page clean. "Schedule a Visit" scrolls
+              or routes to Contact.
+            </td>
+          </tr>
+          <tr>
+            <td>Notes</td>
+            <td>
+              jQuery UI Accordion widget used here for the collapsible service
+              detail panels (e.g., "Brake Services", "Engine &amp; Diagnostics",
+              "A/C &amp; Heating").
+            </td>
+          </tr>
+        </table>
+
+        <h4>Page 3: Gallery (<code>gallery.html</code>)</h4>
+        <table class="page-design">
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Purpose</td>
+            <td>
+              Showcase completed custom work to demonstrate the shop's
+              craftsmanship and range of capabilities.
+            </td>
+          </tr>
+          <tr>
+            <td>Audience</td>
+            <td>
+              Prospective customers, car enthusiasts, referrals viewing past
+              work.
+            </td>
+          </tr>
+          <tr>
+            <td>Content</td>
+            <td>
+              Grid of before-and-after photos showcasing completed repair jobs.
+              Each image pair demonstrates the quality of work. Images are
+              organized by service category (Brakes, Engine, A/C, Other).
+            </td>
+          </tr>
+          <tr>
+            <td>User Data Entry?</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Validations</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Buttons / Links</td>
+            <td>
+              Filter buttons (All / Brakes / Engine / A/C) to sort gallery by
+              service type. Navigation bar present.
+            </td>
+          </tr>
+          <tr>
+            <td>Actions</td>
+            <td>
+              Clicking a thumbnail opens a lightbox overlay showing the full
+              before-and-after image with a caption describing the repair.
+              Filter buttons dynamically show/hide images using JavaScript.
+              Hover effect reveals the repair type and vehicle.
+            </td>
+          </tr>
+          <tr>
+            <td>Notes</td>
+            <td>
+              This page satisfies the assignment's interactive image/gallery
+              requirement. AJAX will be used to load gallery data from a JSON
+              file.
+            </td>
+          </tr>
+        </table>
+
+        <h4>Page 4: About (<code>about.html</code>)</h4>
+        <table class="page-design">
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Purpose</td>
+            <td>
+              Tell the shop's story, share the team's background, and build
+              trust with potential clients.
+            </td>
+          </tr>
+          <tr>
+            <td>Audience</td>
+            <td>
+              All visitors, particularly those making a first decision on
+              whether to trust the shop.
+            </td>
+          </tr>
+          <tr>
+            <td>Content</td>
+            <td>
+              Shop origin story paragraph; owner bio with photo; mission
+              statement; values list; years in business / cars completed
+              statistics displayed as animated counters.
+            </td>
+          </tr>
+          <tr>
+            <td>User Data Entry?</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Validations</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Buttons / Links</td>
+            <td>
+              "See Our Work" → Gallery; "Contact Us" → Contact. Navigation bar
+              present.
+            </td>
+          </tr>
+          <tr>
+            <td>Actions</td>
+            <td>
+              Animated number counters (using JavaScript) that count up when the
+              stat section scrolls into view — e.g., "500+ repairs completed,"
+              "10+ years in business."
+            </td>
+          </tr>
+          <tr>
+            <td>Notes</td>
+            <td>
+              jQuery UI Tabs widget used if content is split into sub-sections
+              (e.g., Story / Team / Values tabs).
+            </td>
+          </tr>
+        </table>
+
+        <h4>Page 5: Contact (<code>contact.html</code>)</h4>
+        <table class="page-design">
+          <tr>
+            <th>Field</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Purpose</td>
+            <td>
+              Allow potential clients to submit inquiries and find the shop's
+              physical location.
+            </td>
+          </tr>
+          <tr>
+            <td>Audience</td>
+            <td>
+              Prospective and returning customers who want to reach out or book
+              a service.
+            </td>
+          </tr>
+          <tr>
+            <td>Content</td>
+            <td>
+              Contact inquiry form; shop address, phone, and email; embedded
+              Google Map showing shop location; business hours.
+            </td>
+          </tr>
+          <tr>
+            <td>User Data Entry?</td>
+            <td>
+              Yes — inquiry form with: Name (text), Email (email), Phone (tel,
+              optional), Service Needed (dropdown), Message (textarea), and
+              Submit button.
+            </td>
+          </tr>
+          <tr>
+            <td>Validations</td>
+            <td>
+              Name: required, non-empty. Email: required, valid format (regex).
+              Phone: optional, numeric/formatted check if provided. Message:
+              required, minimum 20 characters. Real-time validation with jQuery
+              — field outlines turn red on error, green on valid.
+            </td>
+          </tr>
+          <tr>
+            <td>Buttons / Links</td>
+            <td>
+              Submit button (triggers validation then form submission);
+              Reset/Clear button. Navigation bar present.
+            </td>
+          </tr>
+          <tr>
+            <td>Actions</td>
+            <td>
+              On Submit: client-side validation runs; if all fields pass, a
+              jQuery UI Dialog (modal) confirms submission success. Form data is
+              not stored (read-only; no backend). Map uses an embedded Google
+              Maps iframe.
+            </td>
+          </tr>
+          <tr>
+            <td>Notes</td>
+            <td>
+              jQuery UI Dialog widget used for the success confirmation modal.
+              AJAX used to simulate/confirm form submission feedback.
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section class="project-section">
+        <h3>6. Dynamic Functionality</h3>
+
+        <h4>
+          Before &amp; After Gallery with Category Filtering —
+          <em>Gallery Page</em>
+        </h4>
+        <p>
+          A filterable before-and-after photo gallery will allow users to sort
+          completed repair jobs by service type (All, Brakes, Engine, A/C).
+          Clicking a filter button uses JavaScript to dynamically show or hide
+          images matching the selected category without reloading the page.
+          Clicking a thumbnail opens a lightbox overlay displaying the full
+          image with a caption describing the vehicle and the repair performed.
+          Gallery data (image paths, captions, and categories) will be loaded
+          from a local JSON file using an AJAX <code>$.getJSON()</code> call,
+          which populates the grid on page load. This satisfies the assignment's
+          interactive gallery requirement.
+        </p>
+        <strong>Example of this interactivity:</strong><br />
+        <a href="https://isotope.metafizzy.co/" target="_blank"
+          >Isotope Filtering Layout — metafizzy.co</a
+        >
+
+        <h4>Accordion Service Menu — <em>Services Page</em></h4>
+        <p>
+          A jQuery UI Accordion widget will organize the shop's repair services
+          into collapsible sections — for example, "Brake Services," "Engine
+          &amp; Diagnostics," "A/C &amp; Heating," and "Routine Maintenance."
+          Clicking a section header expands it to reveal a description of that
+          service and an estimated price range, while automatically collapsing
+          the previously open panel. This keeps the page concise and prevents
+          users from being overwhelmed by a long list of services at once.
+        </p>
+        <p>
+          <strong>Example of this interactivity:</strong><br />
+          <a href="https://jqueryui.com/accordion/" target="_blank"
+            >jQuery UI Accordion Demo — jqueryui.com</a
+          >
+        </p>
+
+        <h4>
+          Contact Form Validation &amp; Confirmation Modal —
+          <em>Contact Page</em>
+        </h4>
+        <p>
+          The service inquiry form will use jQuery for real-time client-side
+          validation. Each field is checked on blur and again on submit: the
+          Name field must be non-empty, the Email field must match a valid
+          format via regex, Phone is optional but validated as numeric if
+          provided, and the Message field must be at least 20 characters.
+          Invalid fields receive a red outline and an inline error message;
+          valid fields turn green. On successful validation, an AJAX request
+          simulates form submission, and a jQuery UI Dialog modal appears
+          confirming that the inquiry was received. The form is then reset.
+        </p>
+        <p>
+          <strong>Example of this interactivity:</strong><br />
+          <a href="https://jqueryvalidation.org/files/demo/" target="_blank"
+            >jQuery Validate Plugin Demo — jqueryvalidation.org</a
+          ><br />
+          <a href="https://jqueryui.com/dialog/" target="_blank"
+            >jQuery UI Dialog Demo — jqueryui.com</a
+          >
+        </p>
+
+        <h4>Animated Statistics Counter — <em>About Page</em></h4>
+        <p>
+          Key shop milestones — such as "500+ Repairs Completed," "10+ Years in
+          Business," and "100% Satisfaction Guaranteed" — will be displayed as
+          animated number counters that count up from zero when the user scrolls
+          that section into view. This is implemented using the JavaScript
+          Intersection Observer API to trigger the animation at the right
+          moment, combined with a <code>setInterval</code>-based increment loop
+          for each counter. This makes the About page feel dynamic and
+          reinforces the shop's credibility at a glance.
+        </p>
+
+        <p>
+          <strong>Example of this interactivity:</strong><br />
+          <a href="https://codepen.io/shivasurya/pen/FatiB" target="_blank"
+            >Animated Number Counter — CodePen</a
+          >
+        </p>
+
+        <h4>jQuery UI Tooltip on Service Cards — <em>Home Page</em></h4>
+        <p>
+          The featured service cards on the home page (e.g., Brake Repair,
+          Engine Work, A/C Service) will use jQuery UI Tooltips to display a
+          one-line description of each service when the user hovers over the
+          card. For example, hovering over "Brake Repair" shows "Pad
+          replacement, rotor resurfacing, and full brake inspections." This adds
+          helpful context without cluttering the card layout itself.
+        </p>
+        <p>
+          <strong>Example of this interactivity:</strong><br />
+          <a href="https://jqueryui.com/tooltip/" target="_blank"
+            >jQuery UI Tooltip Demo — jqueryui.com</a
+          >
+        </p>
+      </section>
+    </main>
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+  </body>
+</html>
