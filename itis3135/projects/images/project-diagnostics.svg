@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t">
+  <title id="t">Diagnostics scan abstract</title>
+  <rect width="640" height="360" fill="#0c0c0f"/>
+  <rect x="140" y="80" width="360" height="200" rx="12" fill="#111" stroke="#3f3f46" stroke-width="2"/>
+  <path d="M180 140h280M180 170h220M180 200h260M180 230h180" stroke="#27272a" stroke-width="4"/>
+  <path d="M180 140h120M180 200h190" stroke="#6366f1" stroke-width="4"/>
+  <rect x="420" y="210" width="60" height="40" fill="#4f46e5"/>
+</svg>

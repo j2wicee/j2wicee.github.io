@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Abstract Garage &amp; Customs</title>
+    <meta
+      name="description"
+      content="Book an appointment with Abstract Garage &amp; Customs — Aberdeen, NC private garage. Phone, email, hours, and a request form."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body data-page="contact.html">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="logo" href="index.html">Abstract Garage <span>&amp; Customs</span></a>
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-controls="site-nav"
+          aria-expanded="false"
+        >
+          Menu
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section-wrap" id="contact">
+        <div class="contact-glow" aria-hidden="true"></div>
+        <div class="container">
+          <span class="section-label reveal">// 03 — Contact</span>
+          <h1 class="section-title reveal">
+            Book Your<br />
+            <span class="gradient-text">Appointment</span>
+          </h1>
+
+          <div class="contact-columns">
+            <div>
+              <div class="contact-block reveal">
+                <div class="contact-icon" aria-hidden="true">📍</div>
+                <div>
+                  <p class="label">Location</p>
+                  <p class="value">Aberdeen, NC</p>
+                  <p class="note">Private garage — address shared on booking</p>
+                </div>
+              </div>
+              <div class="contact-block reveal">
+                <div class="contact-icon" aria-hidden="true">📱</div>
+                <div>
+                  <p class="label">Phone / Text</p>
+                  <p class="value">(910) 000-0000</p>
+                  <p class="note">Text preferred for fastest response</p>
+                </div>
+              </div>
+              <div class="contact-block reveal">
+                <div class="contact-icon" aria-hidden="true">✉️</div>
+                <div>
+                  <p class="label">Email</p>
+                  <p class="value">abstractgarage2@gmail.com</p>
+                  <p class="note">We reply within 24 hours</p>
+                </div>
+              </div>
+              <div class="contact-block reveal">
+                <div class="contact-icon" aria-hidden="true">🕐</div>
+                <div>
+                  <p class="label">Hours</p>
+                  <p class="value">Mon – Fri: 8AM – 6PM</p>
+                  <p class="note">Sat: 9AM – 3PM · Sun: Closed</p>
+                </div>
+              </div>
+
+              <div class="badge-line reveal">
+                <p class="contact-note">
+                  By appointment only. Fill out the form and we'll reach out within
+                  24 hours to confirm your booking and share the address.
+                </p>
+              </div>
+            </div>
+
+            <div class="form-panel reveal">
+              <div
+                id="form-status"
+                class="form-banner"
+                role="status"
+                hidden
+              ></div>
+
+              <form id="booking-form" class="form-grid" novalidate>
+                <div class="form-row-2">
+                  <div class="field">
+                    <label for="from_name">Name</label>
+                    <input
+                      id="from_name"
+                      name="from_name"
+                      type="text"
+                      autocomplete="name"
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      autocomplete="tel"
+                      placeholder="(910) 555-0000"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    placeholder="you@email.com"
+                  />
+                </div>
+                <div class="field">
+                  <label for="vehicle">Vehicle</label>
+                  <input
+                    id="vehicle"
+                    name="vehicle"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Year, Make, Model (e.g. 2018 Honda Civic)"
+                  />
+                </div>
+                <div class="field">
+                  <label for="service">Service Needed</label>
+                  <select id="service" name="service" required>
+                    <option value="" disabled selected>Select a service...</option>
+                    <option>Engine Repair / Diagnosis</option>
+                    <option>Brakes &amp; Suspension</option>
+                    <option>Electrical &amp; Battery</option>
+                    <option>A/C &amp; Heating</option>
+                    <option>Oil Change &amp; Fluids</option>
+                    <option>Check Engine / Diagnostics</option>
+                    <option>General Maintenance</option>
+                    <option>Not Sure — Need Diagnosis</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="message">Describe the Issue</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="What's going on with the car? Any sounds, warning lights, or symptoms..."
+                    rows="4"
+                  ></textarea>
+                </div>
+                <button class="btn-submit" type="submit">Submit Request →</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><strong>Abstract Garage &amp; Customs</strong> · Aberdeen, NC</p>
+      <p>
+        Educational multi-page site ·
+        <a href="../index.html">ITIS 3135 course home</a>
+      </p>
+      <p>
+        <small>© <span class="js-year"></span> Abstract Garage &amp; Customs</small>
+      </p>
+    </footer>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

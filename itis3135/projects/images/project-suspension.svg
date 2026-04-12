@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="t">
+  <title id="t">Suspension and wheel abstract</title>
+  <defs>
+    <linearGradient id="a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="#0c0c0f"/>
+  <circle cx="200" cy="200" r="78" fill="none" stroke="url(#a)" stroke-width="3"/>
+  <circle cx="440" cy="200" r="78" fill="none" stroke="url(#a)" stroke-width="3" opacity="0.65"/>
+  <path d="M80 200h480" stroke="#27272a" stroke-width="2"/>
+  <path d="M200 122v156M440 122v156" stroke="url(#a)" stroke-width="2" opacity="0.5"/>
+</svg>
