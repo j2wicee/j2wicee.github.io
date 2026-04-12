@@ -1,3 +1,11 @@
+/**
+ * ITIS 3135 Assignment 2 — site-wide behaviors for Abstract Garage & Customs.
+ * - Footer year stamp
+ * - Mobile nav toggle + escape to close
+ * - aria-current="page" on the active nav link (matches body[data-page])
+ * - Scroll reveal for .reveal elements
+ * - Contact form: client-side validation + simulated submit (no backend)
+ */
 (function () {
   "use strict";
 

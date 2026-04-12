@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  ITIS 3135 — Assignment 2. About page: story, pillars, shop photo, stats,
+  and embedded educational video (third-party YouTube) for richer content.
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,7 +21,7 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body data-page="about.html">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="logo" href="index.html">Abstract Garage <span>&amp; Customs</span></a>
         <button
@@ -40,8 +44,8 @@
       </div>
     </header>
 
-    <main>
-      <section class="section section-alt section-wrap">
+    <main id="main-content">
+      <section class="section section-alt section-wrap" id="about-main">
         <div class="section-glow" aria-hidden="true"></div>
         <div class="container">
           <span class="section-label reveal">// 02 — About</span>
@@ -118,6 +122,16 @@
             </aside>
           </div>
 
+          <figure class="content-showcase reveal" id="about-shop-photo">
+            <img
+              src="images/kia_hoodup.jpeg"
+              width="4032"
+              height="3024"
+              alt="Customer vehicle in the bay with the hood open during service"
+            />
+            <figcaption>Private garage · same hands from diagnosis to fix</figcaption>
+          </figure>
+
           <div class="stats-grid reveal" aria-label="Shop highlights">
             <div class="stat-cell">
               <span class="stat-value">10+</span>
@@ -136,11 +150,37 @@
               <span class="stat-label">Aberdeen, NC</span>
             </div>
           </div>
+
+          <section class="about-video-block reveal" id="about-video" aria-labelledby="about-video-heading">
+            <h2 id="about-video-heading" class="about-video-title">
+              How an engine hangs together
+            </h2>
+            <p class="lede about-video-lede">
+              A clear look at the four-stroke cycle and supporting systems — useful
+              context before we talk about your car.
+            </p>
+            <div class="video-embed-shell">
+              <iframe
+                src="https://www.youtube.com/embed/ZQvfHyfgBtA"
+                title="Educational video on YouTube: How a car engine works (Animagraffs)"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
+            <p class="about-video-credit">
+              <small
+                >Video: Animagraffs / YouTube — embedded for learning; not affiliated
+                with Abstract Garage &amp; Customs.</small
+              >
+            </p>
+          </section>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="site-footer">
       <p><strong>Abstract Garage &amp; Customs</strong> · Aberdeen, NC</p>
       <p>
         Educational multi-page site ·

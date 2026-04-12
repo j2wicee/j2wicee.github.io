@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  ITIS 3135 — Assignment 2. Projects / portfolio page with real job photos,
+  before-and-after radio swap, and CTA to contact.
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +10,7 @@
     <title>Projects | Abstract Garage &amp; Customs</title>
     <meta
       name="description"
-      content="Selected jobs from Abstract Garage &amp; Customs — suspension work, electrical diagnosis, A/C repair, and check-engine investigations."
+      content="Selected jobs from Abstract Garage &amp; Customs — suspension work, electrical diagnosis, infotainment upgrades, and check-engine investigations."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +21,7 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body data-page="projects.html">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="logo" href="index.html">Abstract Garage <span>&amp; Customs</span></a>
         <button
@@ -40,8 +44,8 @@
       </div>
     </header>
 
-    <main>
-      <section class="section">
+    <main id="main-content">
+      <section class="section" id="projects-portfolio">
         <div class="container">
           <span class="section-label reveal">// Portfolio</span>
           <h1 class="section-title reveal">
@@ -50,18 +54,20 @@
           </h1>
           <p class="lede reveal">
             Every car tells a story. These are representative jobs that show how we
-            approach diagnosis, suspension, climate control, and electrical
+            approach diagnosis, suspension, cabin electronics, and electrical
             puzzles — without throwing parts at a problem.
           </p>
 
+          <!-- Portfolio cards: each uses images/ photos (see rubric: product pages + images) -->
           <div class="project-grid">
             <article class="project-card reveal">
               <figure class="project-thumb">
                 <img
-                  src="images/hero-car.svg"
+                  class="project-thumb-img--kia"
+                  src="images/kia_hoodup.jpeg"
                   width="800"
-                  height="420"
-                  alt="Graphic silhouette of a coupe similar to the shop's Prelude roots"
+                  height="450"
+                  alt="Vehicle in the shop with the hood raised for suspension and chassis work"
                 />
               </figure>
               <div class="project-body">
@@ -83,10 +89,10 @@
             <article class="project-card reveal">
               <figure class="project-thumb">
                 <img
-                  src="images/project-suspension.svg"
-                  width="640"
-                  height="360"
-                  alt="Abstract illustration of wheels and suspension geometry"
+                  src="images/2cars_hoodup.jpeg"
+                  width="800"
+                  height="450"
+                  alt="Two vehicles in the bay with hoods up during inspection"
                 />
               </figure>
               <div class="project-body">
@@ -107,23 +113,59 @@
             <article class="project-card reveal">
               <figure class="project-thumb">
                 <img
-                  src="images/project-electrical.svg"
-                  width="640"
-                  height="360"
-                  alt="Abstract illustration suggesting electrical pathways"
+                  src="images/motor.jpeg"
+                  width="800"
+                  height="450"
+                  alt="Engine bay with covers removed during inspection or repair"
                 />
               </figure>
               <div class="project-body">
-                <h2>Sedan — parasitic draw overnight</h2>
+                <h2>Under the hood — engine bay work</h2>
                 <p>
-                  Battery was borderline every morning. Rather than swapping parts,
-                  we measured quiescent draw, narrowed the circuit, and found a
-                  trunk lamp stuck on. Repair was simple; the value was knowing
-                  where to look first.
+                  Access covers off, routing verified, and torque back to spec
+                  after the repair. Whether it is chasing a leak, replacing a
+                  sensor, or confirming nothing was disturbed during service, we
+                  treat the bay like a clean workspace — not a parts swap lottery.
                 </p>
                 <div class="project-tags">
-                  <span class="tag">Electrical</span>
-                  <span class="tag">Testing</span>
+                  <span class="tag">Engine</span>
+                  <span class="tag">Inspection</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card project-card--compare-wide reveal">
+              <figure
+                class="project-thumb project-thumb--compare"
+                aria-label="Radio replacement before and after"
+              >
+                <div class="project-compare-pane">
+                  <img
+                    src="images/before.png"
+                    width="1320"
+                    height="2868"
+                    alt="Dashboard and factory radio before head unit replacement"
+                  />
+                </div>
+                <div class="project-compare-pane">
+                  <img
+                    src="images/after.png"
+                    width="1320"
+                    height="2868"
+                    alt="Dashboard after new radio installation"
+                  />
+                </div>
+              </figure>
+              <div class="project-body">
+                <h2>Head unit swap — before &amp; after</h2>
+                <p>
+                  Factory radio out, new head unit in: careful trim and bezel work,
+                  clean wiring behind the stack, and a road test to confirm Bluetooth
+                  and steering-wheel controls behave the way the owner expects.
+                </p>
+                <div class="project-tags">
+                  <span class="tag">Infotainment</span>
+                  <span class="tag">Wiring</span>
                 </div>
               </div>
             </article>
@@ -131,34 +173,10 @@
             <article class="project-card reveal">
               <figure class="project-thumb">
                 <img
-                  src="images/project-ac.svg"
-                  width="640"
-                  height="360"
-                  alt="Abstract illustration suggesting cool airflow"
-                />
-              </figure>
-              <div class="project-body">
-                <h2>Hot-day A/C — weak vent temps</h2>
-                <p>
-                  Verified pressures, inspected condenser airflow, and confirmed a
-                  tired compressor clutch was slipping under load. Replaced the
-                  compressor, pulled deep vacuum, and recharged to OEM spec. Vents
-                  now blow cold even in Carolina humidity.
-                </p>
-                <div class="project-tags">
-                  <span class="tag">HVAC</span>
-                  <span class="tag">Refrigerant</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="project-card reveal">
-              <figure class="project-thumb">
-                <img
-                  src="images/project-diagnostics.svg"
-                  width="640"
-                  height="360"
-                  alt="Abstract illustration suggesting a diagnostic display"
+                  src="images/diagnostic_sensor.jpeg"
+                  width="800"
+                  height="450"
+                  alt="Diagnostic sensor and wiring checked during a check-engine investigation"
                 />
               </figure>
               <div class="project-body">
@@ -176,17 +194,9 @@
               </div>
             </article>
 
-            <article class="project-card reveal">
-              <figure class="project-thumb">
-                <img
-                  src="images/hero-car.svg"
-                  width="800"
-                  height="420"
-                  alt="Graphic coupe silhouette representing a booked restoration slot"
-                />
-              </figure>
+            <article class="project-card project-card--cta reveal">
               <div class="project-body">
-                <h2>Booked build slot — tell us yours</h2>
+                <h2>Larger builds — tell us yours</h2>
                 <p>
                   We regularly stage longer jobs: manual swaps, brake upgrades for
                   occasional track days, and front-end rebuilds on older imports. If
@@ -207,7 +217,7 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="site-footer">
       <p><strong>Abstract Garage &amp; Customs</strong> · Aberdeen, NC</p>
       <p>
         Educational multi-page site ·

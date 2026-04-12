@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  ITIS 3135 — Assignment 2. Contact page: hours, location note, booking form,
+  and a small shop image to reinforce brand context.
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,7 +21,7 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body data-page="contact.html">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="logo" href="index.html">Abstract Garage <span>&amp; Customs</span></a>
         <button
@@ -40,7 +44,7 @@
       </div>
     </header>
 
-    <main>
+    <main id="main-content">
       <section class="section section-wrap" id="contact">
         <div class="contact-glow" aria-hidden="true"></div>
         <div class="container">
@@ -52,6 +56,16 @@
 
           <div class="contact-columns">
             <div>
+              <figure class="content-showcase contact-showcase reveal" id="contact-photo">
+                <img
+                  src="images/diagnostic_sensor.jpeg"
+                  width="4032"
+                  height="3024"
+                  alt="Diagnostic tooling and wiring during a vehicle inspection"
+                />
+                <figcaption>Bring your symptoms — we bring the meters</figcaption>
+              </figure>
+
               <div class="contact-block reveal">
                 <div class="contact-icon" aria-hidden="true">📍</div>
                 <div>
@@ -178,7 +192,7 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="site-footer">
       <p><strong>Abstract Garage &amp; Customs</strong> · Aberdeen, NC</p>
       <p>
         Educational multi-page site ·

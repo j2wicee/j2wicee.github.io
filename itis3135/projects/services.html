@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+  ITIS 3135 — Assignment 2. Services page: six service categories with a
+  real shop photo (engine bay) above the grid to satisfy image + content rubric.
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,7 +21,7 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body data-page="services.html">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="logo" href="index.html">Abstract Garage <span>&amp; Customs</span></a>
         <button
@@ -40,8 +44,8 @@
       </div>
     </header>
 
-    <main>
-      <section class="section">
+    <main id="main-content">
+      <section class="section" id="services-main">
         <div class="container">
           <header>
             <span class="section-label reveal">// 01 — Services</span>
@@ -51,7 +55,17 @@
             </h1>
           </header>
 
-          <div class="services-grid">
+          <figure class="content-showcase services-feature reveal" id="services-photo">
+            <img
+              src="images/motor.jpeg"
+              width="4032"
+              height="3024"
+              alt="Engine bay with covers removed during inspection or repair"
+            />
+            <figcaption>Diagnosis first — then we quote parts and labor</figcaption>
+          </figure>
+
+          <div class="services-grid" id="services-grid">
             <article class="service-card reveal">
               <div class="service-line" aria-hidden="true"></div>
               <div class="service-top">
@@ -140,7 +154,7 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="site-footer">
       <p><strong>Abstract Garage &amp; Customs</strong> · Aberdeen, NC</p>
       <p>
         Educational multi-page site ·

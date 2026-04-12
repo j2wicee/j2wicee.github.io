@@ -1,4 +1,8 @@
-/* Abstract Garage & Customs — static site styles (from React/Tailwind source) */
+/*
+ * Abstract Garage & Customs — static site styles (ITIS 3135 Assignment 2).
+ * Layout: header/nav, hero, home bay + previews, services/about/projects/contact,
+ * forms, responsive nav. Uses CSS variables, grid/flex, transitions, and media queries.
+ */
 
 :root {
   --bg: #080808;
@@ -204,10 +208,17 @@ h3 {
     border-color 0.2s var(--ease-out);
 }
 
-.site-nav a:hover,
-.site-nav a[aria-current="page"] {
+.site-nav a:hover {
   color: var(--indigo-300);
   border-color: var(--indigo-500);
+}
+
+/* Current page: visible “you are here” for nav rubric / accessibility */
+.site-nav a[aria-current="page"] {
+  color: var(--white);
+  border-bottom-color: var(--indigo-400);
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
 }
 
 @media (max-width: 768px) {
@@ -827,7 +838,8 @@ main {
 
 .project-thumb {
   margin: 0;
-  aspect-ratio: 16 / 9;
+  /* Source photos are 4:3; avoids heavy top/bottom crop vs 16:9 */
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   background: #0c0c0f;
 }
@@ -836,11 +848,75 @@ main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.55s var(--ease-out);
 }
 
-.project-card:hover .project-thumb img {
+/* Kia bay shot: slight zoom + lower anchor so more of the car stays in frame */
+.project-thumb-img--kia {
+  object-position: center 72%;
+  transform: scale(1.05);
+  transform-origin: 50% 68%;
+}
+
+.project-card:hover .project-thumb:not(.project-thumb--compare) img.project-thumb-img--kia {
+  transform: scale(1.092);
+  transform-origin: 50% 68%;
+}
+
+/* Side-by-side before/after (portrait phone captures) */
+.project-thumb--compare {
+  aspect-ratio: 2640 / 2868;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  background: var(--zinc-900);
+}
+
+.project-compare-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  min-width: 0;
+  padding: 0.4rem;
+  background: #070709;
+}
+
+.project-thumb--compare img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.project-card:hover .project-thumb:not(.project-thumb--compare) img {
   transform: scale(1.04);
+}
+
+@media (max-width: 520px) {
+  .project-thumb--compare {
+    grid-template-columns: 1fr;
+    aspect-ratio: auto;
+  }
+
+  .project-thumb--compare .project-compare-pane {
+    aspect-ratio: 1320 / 2868;
+    max-height: min(52vh, 420px);
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-card--compare-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+.project-card--cta {
+  grid-column: auto;
 }
 
 .project-body {
@@ -1104,6 +1180,143 @@ main {
 .btn-submit:disabled {
   background: var(--zinc-700);
   cursor: not-allowed;
+}
+
+/* —— Home: shop photo band (rubric image on entry page) —— */
+.home-bay {
+  padding-block: 4rem 5rem;
+  border-top: 1px solid var(--zinc-800);
+  background: linear-gradient(180deg, rgba(12, 12, 18, 0.5) 0%, var(--bg) 100%);
+}
+
+.home-bay-inner {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .home-bay-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+    gap: 3rem;
+  }
+}
+
+.home-bay-copy .section-title {
+  margin-top: 0.75rem;
+}
+
+.home-bay-figure {
+  margin: 0;
+  border: 1px solid var(--zinc-800);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0c0c0f;
+  box-shadow: var(--shadow-card);
+}
+
+.home-bay-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: min(58vh, 520px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.home-bay-figure figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--zinc-500);
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--zinc-800);
+}
+
+/* —— Shared figure + photo blocks (about / services / contact) —— */
+.content-showcase {
+  margin: 2.5rem 0 0;
+  border: 1px solid var(--zinc-800);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #0c0c0f;
+  box-shadow: var(--shadow-card);
+}
+
+.content-showcase img {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: min(52vh, 480px);
+  object-fit: cover;
+  object-position: center;
+}
+
+.content-showcase figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--zinc-500);
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--zinc-800);
+}
+
+.services-feature {
+  margin-top: 2rem;
+}
+
+.contact-showcase {
+  margin: 0 0 1.5rem;
+}
+
+/* —— About: embedded video (third-party) —— */
+.about-video-block {
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--zinc-800);
+}
+
+.about-video-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.about-video-lede {
+  margin: 0;
+  max-width: 40rem;
+}
+
+.about-video-credit {
+  margin: 1rem 0 0;
+  color: var(--zinc-600);
+  line-height: 1.5;
+}
+
+.video-embed-shell {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-width: 48rem;
+  margin: 1.75rem auto 0;
+  border: 1px solid var(--zinc-800);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--shadow-deep);
+}
+
+.video-embed-shell iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* —— Home previews —— */

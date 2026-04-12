@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!--
+  ITIS 3135 — Assignment 2 (Abstract Garage & Customs). Entry / home page:
+  hero, shop photo, preview links, header/footer/main, semantic ids for landmarks.
+  Live site (also paste this URL into your Canvas submission comment):
+  https://j2wicee.github.io/itis3135/projects/index.html
+-->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,7 +23,7 @@
     <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body data-page="index.html">
-    <header class="site-header">
+    <header class="site-header" id="site-header">
       <div class="header-inner">
         <a class="logo" href="index.html">Abstract Garage <span>&amp; Customs</span></a>
         <button
@@ -40,19 +46,11 @@
       </div>
     </header>
 
-    <main>
-      <section class="hero" aria-labelledby="hero-heading">
+    <main id="main-content">
+      <section class="hero" id="home-hero" aria-labelledby="hero-heading">
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-stars" aria-hidden="true"></div>
         <div class="hero-glow" aria-hidden="true"></div>
-        <div class="hero-visual" aria-hidden="true">
-          <img
-            src="images/hero-car.svg"
-            width="520"
-            height="273"
-            alt="Stylized coupe illustration in indigo and violet"
-          />
-        </div>
         <div class="hero-inner">
           <p class="hero-kicker">Abstract Garage &amp; Customs</p>
           <h1 id="hero-heading" class="hero-title">
@@ -97,7 +95,32 @@
         </div>
       </div>
 
-      <section class="home-preview section" aria-labelledby="preview-heading">
+      <section class="home-bay section" id="home-bay" aria-labelledby="bay-heading">
+        <div class="container home-bay-inner">
+          <div class="home-bay-copy reveal">
+            <span class="section-label">In the bay</span>
+            <h2 id="bay-heading" class="section-title">
+              Real cars.<br />
+              <span class="gradient-text">Real diagnoses.</span>
+            </h2>
+            <p class="lede">
+              Same workspace as the portfolio shots — hoods up, lights on, and work
+              explained in plain language before we turn a wrench.
+            </p>
+          </div>
+          <figure class="home-bay-figure reveal">
+            <img
+              src="images/2cars_hoodup.jpeg"
+              width="4032"
+              height="3024"
+              alt="Two customer vehicles in the shop with hoods raised for inspection"
+            />
+            <figcaption>Aberdeen, NC · by appointment</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="home-preview section" id="home-preview" aria-labelledby="preview-heading">
         <div class="container">
           <span class="section-label">Overview</span>
           <h2 id="preview-heading" class="section-title reveal">
@@ -131,7 +154,7 @@
             <article class="preview-card reveal">
               <h3>Recent work</h3>
               <p>
-                Highlights from real jobs: suspensions, A/C recoveries, and
+                Highlights from real jobs: suspension, cabin electronics, and
                 electrical hunts that needed patience — not parts cannoning.
               </p>
               <a class="link-arrow" href="projects.html">See projects →</a>
@@ -141,7 +164,7 @@
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer" id="site-footer">
       <p><strong>Abstract Garage &amp; Customs</strong> · Aberdeen, NC</p>
       <p>
         Educational multi-page site ·
