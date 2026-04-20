@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peer Review 2</title>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <div data-include="components/header.html"></div>
+
+    <div>
+        <img src="images/sports.png" alt="Images of Charlotte Sports Analytics Club">
+    </div>
+
+    <main>
+        <h2>Peer Review 2</h2>
+        <p>
+            Review of:
+            <a href="https://midnightamerican.github.io/ITIS3135/projects/index.html" target="_blank">
+                midnightamerican.github.io/ITIS3135/projects/index.html
+            </a>
+        </p>
+
+        <section>
+            <h3>Checklist Results</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Criteria</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Submission links directly to the page to be reviewed</td>
+                        <td>&#10003; Pass</td>
+                        <td>The link works and loads the page correctly.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>No spaces or uppercase letters in file/folder names</td>
+                        <td>&#10007; Fail</td>
+                        <td>
+                            The folder name <code>ITIS3135</code> in the URL path uses all uppercase
+                            letters, which violates the no-uppercase file/folder naming requirement.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3a</td>
+                        <td>Sufficient contrast and font sizing for readability</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            White text on a dark green header provides strong contrast. Body text on
+                            a light background is clear and well-sized throughout the page.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3b</td>
+                        <td>Site colors and fonts use the standard .css file</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            The visual styling is consistent and cohesive across the page,
+                            indicating a shared stylesheet is in use.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3c</td>
+                        <td>CRAP principles applied (Contrast, Repetition, Alignment, Proximity)</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            Strong contrast between the dark green header and white content area.
+                            Consistent card layout for the three &ldquo;What We Do&rdquo; sections.
+                            Content is well-aligned and grouped logically throughout the page.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Page contains &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt; tags</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            A clear header, main content area, and footer are all visible and
+                            correctly structured on the rendered page.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4d</td>
+                        <td>Optional &lt;nav&gt; between header and main</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            A navigation bar with links (Home, About Us, Officers, Events, Projects)
+                            is visibly present between the header and main content.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Header contains brand name in an &lt;h1&gt;</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            &ldquo;Charlotte Sports Analytics Club&rdquo; appears prominently in the
+                            header as the brand name, confirmed as an <code>&lt;h1&gt;</code> via
+                            page source.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Main starts with page name as an &lt;h2&gt;, not the site/brand name</td>
+                        <td>&#9888; Warning</td>
+                        <td>
+                            &ldquo;Charlotte Sports Analytics Club&rdquo; appears again as a heading
+                            overlaid on the hero image in the main content area, repeating the brand
+                            name rather than using a distinct page-level heading. The checklist
+                            states the main should not include the site/brand name.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Brand tagline appears consistently across pages</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            &ldquo;Where data meets the game. Analyzing performance, strategy, and
+                            sports trends.&rdquo; serves as a clear tagline on the page. Consistency
+                            across all other pages should be verified manually.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8a</td>
+                        <td>Footer contains a menu of user&rsquo;s pages</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            A footer is present with a &ldquo;Designed by Saint Remy Designs&rdquo;
+                            credit and validation links. A full page menu in the footer was not
+                            visible in screenshots; this should be verified on the live page.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8b</td>
+                        <td>Footer has an HTML validation button/link that validates</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            An HTML Validator link is present in the footer and appears to validate.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8c</td>
+                        <td>Footer has a CSS validation button/link that validates</td>
+                        <td>&#10007; Fail</td>
+                        <td>
+                            A CSS Validator link is present in the footer, but the Accumulus Messages
+                            overlay visible in the screenshots reports CSS: 1 error and 3 warnings,
+                            meaning the stylesheet does not fully validate.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Summary</h3>
+            <p>
+                The Charlotte Sports Analytics Club page is well-designed with a strong green and
+                white color scheme, consistent card layouts, clear navigation, and a visible footer
+                with validation links. However, there are two confirmed issues: the folder name
+                <code>ITIS3135</code> in the URL uses uppercase letters, violating the file naming
+                convention, and the CSS validator reports 1 error and 3 warnings meaning the
+                stylesheet does not fully validate. Additionally, the brand name is repeated as a
+                heading in the main hero section, which may conflict with the checklist requirement
+                that the main heading be the page name rather than the site brand name.
+            </p>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+</body>
+</html>

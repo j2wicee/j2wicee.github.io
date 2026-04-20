@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peer Review 1</title>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <div data-include="components/header.html"></div>
+
+    <div>
+        <img src="images/wendy.png" alt="Image of Wendy's Kitchen">
+    </div>
+
+    <main>
+        <h2>Peer Review</h2>
+        <p>
+            Review of:
+            <a href="https://angelvn2005.github.io/itis3135/projects/index.html" target="_blank">
+                angelvn2005.github.io/itis3135/projects/index.html
+            </a>
+        </p>
+
+        <section>
+            <h3>Checklist Results</h3>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Criteria</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Submission links directly to the page to be reviewed</td>
+                        <td>&#10003; Pass</td>
+                        <td>The link works and loads the page correctly.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>No spaces or uppercase letters in file/folder names</td>
+                        <td>&#9888; Warning</td>
+                        <td>
+                            The path <code>itis3135/projects/index.html</code> appears clean, but
+                            placeholder images reference <code>placeholderImage.jpg</code> which contains
+                            an uppercase &ldquo;I&rdquo;. All final image filenames should be verified
+                            once real images are added.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3a</td>
+                        <td>Sufficient contrast and font sizing for readability</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            The page uses dark serif text on a warm off-white background. Font sizing
+                            is generous and readable throughout. Contrast appears sufficient visually.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3b</td>
+                        <td>Site colors and fonts use the standard .css file</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            The visual styling is consistent and cohesive across the page,
+                            indicating a shared stylesheet is in use.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3c</td>
+                        <td>CRAP principles applied (Contrast, Repetition, Alignment, Proximity)</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            The page demonstrates strong contrast between headings and body text,
+                            consistent card layouts for menu items, clear alignment throughout,
+                            and good grouping of related content. CRAP principles appear well applied.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Page contains &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt; tags</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            The page has a clear header, main content area, and footer, all appearing
+                            correctly structured on the rendered page.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4d</td>
+                        <td>Optional &lt;nav&gt; between header and main</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            A navigation bar with links (HOME, MENU, CART, CHECK-OUT, CONTACT US) is
+                            visibly present between the header and main content.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Header contains brand name in an &lt;h1&gt;</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            &ldquo;Wendy&rsquo;s Kitchen&rdquo; appears prominently in the header in
+                            a large display font as the brand name. The page name is not repeated in the header.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Main starts with page name as an &lt;h2&gt;, not the site/brand name</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            The main content opens with &ldquo;Bringing the taste of Dominican cuisine
+                            to those moments that matter.&rdquo; as a large heading, which is distinct
+                            from the brand name and appropriate as a page-level heading.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Brand tagline appears consistently across pages</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            &ldquo;cocina en casa&rdquo; appears as a tagline below the brand name in
+                            the header. Consistency across all other pages should be verified manually.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8a</td>
+                        <td>Footer contains a menu of user&rsquo;s pages</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            A proper footer is present with a menu of the user&rsquo;s pages.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8b</td>
+                        <td>Footer has an HTML validation button/link that validates</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            An HTML validation link is present in the footer and validates correctly.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>8c</td>
+                        <td>Footer has a CSS validation button/link that validates</td>
+                        <td>&#10003; Pass</td>
+                        <td>
+                            A CSS validation link is present in the footer and validates correctly.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>No JavaScript errors on the page</td>
+                        <td>&#10007; Fail</td>
+                        <td>
+                            One JavaScript error is being caught in the browser console. This should
+                            be investigated and resolved before final submission.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Summary</h3>
+            <p>
+                The page has a polished, well-designed brand identity for Wendy&rsquo;s Kitchen
+                with strong typography, consistent card layouts, clear CRAP principles, and a visible
+                navigation bar. The tagline &ldquo;cocina en casa&rdquo; is a nice touch in the header.
+                The footer is present with proper page links and working HTML and CSS validation links.
+                The main outstanding issue is one JavaScript error being caught in the browser console,
+                which should be investigated and resolved before final submission. The uppercase letter
+                in <code>placeholderImage.jpg</code> should also be corrected once real images are added.
+            </p>
+        </section>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+</body>
+</html>

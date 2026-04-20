@@ -190,3 +190,7 @@ button {
 button:hover {
   transform: scale(1.05);
 }
+img{
+  height: 250px;
+  width: 250px;
+}
