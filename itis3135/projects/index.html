@@ -48,6 +48,58 @@
 
     <main id="main-content">
       <section class="hero" id="home-hero" aria-labelledby="hero-heading">
+        <div
+          class="hero-carousel"
+          id="hero-carousel"
+          role="region"
+          aria-label="Featured service highlights"
+        >
+          <div class="hero-slides">
+            <figure class="hero-slide is-active" data-slide>
+              <img
+                src="images/kia_hoodup.jpeg"
+                width="4032"
+                height="3024"
+                alt="Vehicle with hood open during hands-on diagnosis in the shop"
+              />
+            </figure>
+            <figure class="hero-slide" data-slide>
+              <img
+                src="images/2cars_hoodup.jpeg"
+                width="4032"
+                height="3024"
+                alt="Two customer vehicles side by side in the bay for inspection"
+              />
+            </figure>
+            <figure class="hero-slide" data-slide>
+              <img
+                src="images/diagnostic_sensor.jpeg"
+                width="4032"
+                height="3024"
+                alt="Diagnostic sensor and wiring being checked to confirm repair decisions"
+              />
+            </figure>
+          </div>
+          <div class="hero-carousel-controls">
+            <button
+              type="button"
+              class="hero-control hero-control-prev"
+              id="hero-prev"
+              aria-label="Previous hero slide"
+            >
+              Prev
+            </button>
+            <button
+              type="button"
+              class="hero-control hero-control-next"
+              id="hero-next"
+              aria-label="Next hero slide"
+            >
+              Next
+            </button>
+          </div>
+          <div class="hero-dots" id="hero-dots" aria-label="Hero slide navigation"></div>
+        </div>
         <div class="hero-bg" aria-hidden="true"></div>
         <div class="hero-stars" aria-hidden="true"></div>
         <div class="hero-glow" aria-hidden="true"></div>
@@ -159,6 +211,23 @@
               </p>
               <a class="link-arrow" href="projects.html">See projects →</a>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="testimonials" aria-labelledby="testimonials-heading">
+        <div class="container">
+          <span class="section-label reveal">Client feedback</span>
+          <h2 id="testimonials-heading" class="section-title reveal">
+            Trusted By<br />
+            <span class="gradient-text">Real Drivers.</span>
+          </h2>
+          <div class="testimonial-shell reveal" id="testimonial-shell">
+            <blockquote class="testimonial-quote" id="testimonial-quote">
+              "I came in with a random suspension noise and got an honest diagnosis the same day.
+              No upsell, just exactly what needed fixing."
+            </blockquote>
+            <p class="testimonial-meta" id="testimonial-meta">— Local client, Aberdeen NC</p>
           </div>
         </div>
       </section>

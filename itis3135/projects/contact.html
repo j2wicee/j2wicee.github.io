@@ -127,6 +127,7 @@
                       placeholder="Your name"
                       required
                     />
+                    <p class="field-error" id="error-from_name" aria-live="polite"></p>
                   </div>
                   <div class="field">
                     <label for="phone">Phone</label>
@@ -138,6 +139,7 @@
                       placeholder="(910) 555-0000"
                       required
                     />
+                    <p class="field-error" id="error-phone" aria-live="polite"></p>
                   </div>
                 </div>
                 <div class="field">
@@ -149,6 +151,7 @@
                     autocomplete="email"
                     placeholder="you@email.com"
                   />
+                  <p class="field-error" id="error-email" aria-live="polite"></p>
                 </div>
                 <div class="field">
                   <label for="vehicle">Vehicle</label>
@@ -159,6 +162,7 @@
                     autocomplete="off"
                     placeholder="Year, Make, Model (e.g. 2018 Honda Civic)"
                   />
+                  <p class="field-error" id="error-vehicle" aria-live="polite"></p>
                 </div>
                 <div class="field">
                   <label for="service">Service Needed</label>
@@ -174,6 +178,7 @@
                     <option>Not Sure — Need Diagnosis</option>
                     <option>Other</option>
                   </select>
+                  <p class="field-error" id="error-service" aria-live="polite"></p>
                 </div>
                 <div class="field">
                   <label for="message">Describe the Issue</label>
@@ -183,6 +188,7 @@
                     placeholder="What's going on with the car? Any sounds, warning lights, or symptoms..."
                     rows="4"
                   ></textarea>
+                  <p class="field-error" id="error-message" aria-live="polite"></p>
                 </div>
                 <button class="btn-submit" type="submit">Submit Request →</button>
               </form>
