@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joshua Evans's Capable Mouse ~ ITIS 3135 | Burrow Weather</title>
+    <script
+      src="https://lint.page/kit/4d0fe3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .weather-search {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: flex-end;
+        margin-bottom: 20px;
+        max-width: 480px;
+      }
+      .weather-search label {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex: 1;
+        min-width: 180px;
+        font-size: 0.9em;
+        color: #3b2f2a;
+      }
+      #city-input {
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: "Libre Baskerville", serif;
+        font-size: 0.95em;
+        background-color: #faf8f5;
+        color: #4a4a4a;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      #weather-error {
+        color: #7a2020;
+        font-size: 0.9em;
+        margin-top: 6px;
+        min-height: 1.2em;
+      }
+      .weather-card {
+        background-color: #e8ded4;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px 24px;
+        max-width: 520px;
+        display: none;
+      }
+      .weather-card.visible { display: block; }
+      .weather-location {
+        font-family: "Oswald", sans-serif;
+        font-size: 1.3em;
+        color: #3b2f2a;
+        margin: 0 0 4px 0;
+      }
+      .weather-condition {
+        font-style: italic;
+        color: #4a4a4a;
+        margin: 0 0 16px 0;
+        font-size: 1em;
+      }
+      .weather-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .weather-stat {
+        background-color: #f5f2ee;
+        border-radius: 7px;
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-size: 0.78em;
+        color: #5f7a8a;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin: 0 0 4px 0;
+      }
+      .stat-value {
+        font-family: "Oswald", sans-serif;
+        font-size: 1.35em;
+        color: #3b2f2a;
+        margin: 0;
+      }
+      .stat-sub {
+        font-size: 0.78em;
+        color: #4a4a4a;
+        margin: 2px 0 0 0;
+      }
+      .mouse-report {
+        background-color: #3b2f2a;
+        color: #f5f2ee;
+        border-radius: 7px;
+        padding: 12px 14px;
+        font-style: italic;
+        font-size: 0.93em;
+        margin-top: 4px;
+      }
+      .mouse-report-label {
+        font-family: "Oswald", sans-serif;
+        font-style: normal;
+        font-size: 0.82em;
+        opacity: 0.75;
+        display: block;
+        margin-bottom: 4px;
+      }
+      #loading-msg {
+        color: #5f7a8a;
+        font-style: italic;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-include="components/header.html"></div>
+    <main>
+      <h2>Capable Mouse Burrow Weather</h2>
+      <p>
+        Before heading out for a foraging run, Capable Mouse always checks
+        surface conditions. Enter any city to get the full Burrow Weather
+        Report.
+      </p>
+      <div class="weather-search">
+        <label for="city-input">
+          City or location
+          <input
+            type="text"
+            id="city-input"
+            placeholder="e.g. Charlotte, NC"
+            autocomplete="off"
+          />
+        </label>
+        <button id="search-btn">Check Weather</button>
+      </div>
+      <p id="weather-error" aria-live="polite"></p>
+      <p id="loading-msg" aria-live="polite">Scanning the surface… please wait.</p>
+
+      <div class="weather-card" id="weather-card" aria-live="polite">
+        <p class="weather-location" id="w-location"></p>
+        <p class="weather-condition" id="w-condition"></p>
+        <div class="weather-grid">
+          <div class="weather-stat">
+            <p class="stat-label">Temperature</p>
+            <p class="stat-value" id="w-temp"></p>
+            <p class="stat-sub" id="w-temp-c"></p>
+          </div>
+          <div class="weather-stat">
+            <p class="stat-label">Feels Like</p>
+            <p class="stat-value" id="w-feels"></p>
+            <p class="stat-sub" id="w-feels-c"></p>
+          </div>
+          <div class="weather-stat">
+            <p class="stat-label">Humidity</p>
+            <p class="stat-value" id="w-humidity"></p>
+            <p class="stat-sub" id="w-humidity-sub"></p>
+          </div>
+          <div class="weather-stat">
+            <p class="stat-label">Wind Speed</p>
+            <p class="stat-value" id="w-wind"></p>
+            <p class="stat-sub" id="w-wind-sub"></p>
+          </div>
+          <div class="weather-stat">
+            <p class="stat-label">Cheese Ripening Index</p>
+            <p class="stat-value" id="w-cri"></p>
+            <p class="stat-sub" id="w-cri-sub"></p>
+          </div>
+        </div>
+        <div class="mouse-report">
+          <span class="mouse-report-label">Capable Mouse Field Report</span>
+          <span id="w-mouse-report"></span>
+        </div>
+      </div>
+    </main>
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+    <script>
+      const WMO_CODES = {
+        0:  'Clear Sky',
+        1:  'Mainly Clear',
+        2:  'Partly Cloudy',
+        3:  'Overcast',
+        45: 'Foggy',
+        48: 'Freezing Fog',
+        51: 'Light Drizzle',
+        53: 'Moderate Drizzle',
+        55: 'Dense Drizzle',
+        61: 'Light Rain',
+        63: 'Moderate Rain',
+        65: 'Heavy Rain',
+        71: 'Light Snow',
+        73: 'Moderate Snow',
+        75: 'Heavy Snow',
+        77: 'Snow Grains',
+        80: 'Rain Showers',
+        81: 'Moderate Rain Showers',
+        82: 'Violent Rain Showers',
+        85: 'Snow Showers',
+        86: 'Heavy Snow Showers',
+        95: 'Thunderstorm',
+        96: 'Thunderstorm with Hail',
+        99: 'Severe Thunderstorm with Hail'
+      };
+
+      function mouseReport(code, tempF, windMph, humidity) {
+        if (code === 0 || code === 1) return 'Conditions are perfect for a surface run! Predator visibility is high though — stay close to the walls.';
+        if (code === 2 || code === 3) return 'Overcast skies offer good cover from aerial predators. Excellent foraging opportunity!';
+        if (code === 45 || code === 48) return 'Dense fog detected — navigation may be tricky but excellent predator concealment. Proceed with caution.';
+        if (code >= 51 && code <= 55) return 'Light drizzle on the surface. Bring the waterproof Crumb Tracker Edition. Cheese may be soggy.';
+        if (code >= 61 && code <= 65) return 'Rain confirmed. Keep the Cheese CPU dry — moisture interferes with fermentation circuits. Indoor operations recommended.';
+        if (code >= 71 && code <= 77) return 'Snow on the surface! The Wireless Crumb Tracker struggles in powder. Stock up on winter cheese reserves.';
+        if (code >= 80 && code <= 82) return 'Rain showers — intermittent cover. Time your foraging runs between bursts for maximum efficiency.';
+        if (code >= 85 && code <= 86) return 'Heavy snow showers detected. Burrow lockdown protocol activated. Perfect day for indoor circuit debugging.';
+        if (code >= 95) return 'THUNDERSTORM ALERT! All field operations suspended. The Workshop is sealed. Emergency cheese rations are stocked.';
+        return 'Conditions are nominal. Surface foraging should proceed as planned.';
+      }
+
+      function cheeseRipeningIndex(tempF, humidity) {
+        const tempC = (tempF - 32) * 5 / 9;
+        const score = Math.max(0, Math.min(100,
+          100 - Math.abs(tempC - 14) * 3 - Math.abs(humidity - 70) * 0.8
+        ));
+        const rating = score >= 80 ? 'Optimal' : score >= 55 ? 'Acceptable' : score >= 30 ? 'Poor' : 'Critical';
+        return { score: Math.round(score), rating };
+      }
+
+      function fToC(f) { return ((f - 32) * 5 / 9).toFixed(1); }
+
+      async function fetchWeather(city) {
+        const geoUrl =
+          'https://geocoding-api.open-meteo.com/v1/search?name=' +
+          encodeURIComponent(city) + '&count=1&language=en&format=json';
+        const geoRes = await fetch(geoUrl);
+        if (!geoRes.ok) throw new Error('Geocoding service unavailable.');
+        const geoData = await geoRes.json();
+        if (!geoData.results || geoData.results.length === 0) {
+          throw new Error('Location "' + city + '" not found. Try a different city name.');
+        }
+        const loc = geoData.results[0];
+
+        const wUrl =
+          'https://api.open-meteo.com/v1/forecast' +
+          '?latitude=' + loc.latitude +
+          '&longitude=' + loc.longitude +
+          '&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m' +
+          '&temperature_unit=fahrenheit&wind_speed_unit=mph';
+        const wRes = await fetch(wUrl);
+        if (!wRes.ok) throw new Error('Weather service unavailable.');
+        const wData = await wRes.json();
+
+        return { loc, current: wData.current };
+      }
+
+      function displayWeather(loc, current) {
+        const code = current.weather_code;
+        const tempF = current.temperature_2m;
+        const feelsF = current.apparent_temperature;
+        const humidity = current.relative_humidity_2m;
+        const windMph = current.wind_speed_10m;
+
+        const country = loc.country_code ? ' (' + loc.country_code.toUpperCase() + ')' : '';
+        document.getElementById('w-location').textContent = loc.name + country;
+        document.getElementById('w-condition').textContent = WMO_CODES[code] || 'Unknown conditions';
+
+        document.getElementById('w-temp').textContent = Math.round(tempF) + '°F';
+        document.getElementById('w-temp-c').textContent = fToC(tempF) + '°C';
+
+        document.getElementById('w-feels').textContent = Math.round(feelsF) + '°F';
+        document.getElementById('w-feels-c').textContent = fToC(feelsF) + '°C';
+
+        document.getElementById('w-humidity').textContent = humidity + '%';
+        document.getElementById('w-humidity-sub').textContent =
+          humidity < 40 ? 'Dry' : humidity < 70 ? 'Comfortable' : 'Humid';
+
+        document.getElementById('w-wind').textContent = Math.round(windMph) + ' mph';
+        document.getElementById('w-wind-sub').textContent =
+          windMph < 10 ? 'Calm' : windMph < 25 ? 'Breezy' : windMph < 45 ? 'Windy' : 'Very Windy';
+
+        const cri = cheeseRipeningIndex(tempF, humidity);
+        document.getElementById('w-cri').textContent = cri.score + '/100';
+        document.getElementById('w-cri-sub').textContent = cri.rating;
+
+        document.getElementById('w-mouse-report').textContent =
+          mouseReport(code, tempF, windMph, humidity);
+
+        document.getElementById('weather-card').classList.add('visible');
+      }
+
+      async function handleSearch() {
+        const city = document.getElementById('city-input').value.trim();
+        const errEl = document.getElementById('weather-error');
+        const loadEl = document.getElementById('loading-msg');
+
+        errEl.textContent = '';
+        if (!city) { errEl.textContent = 'Please enter a city name.'; return; }
+
+        document.getElementById('weather-card').classList.remove('visible');
+        loadEl.style.display = 'block';
+
+        try {
+          const { loc, current } = await fetchWeather(city);
+          displayWeather(loc, current);
+        } catch (err) {
+          errEl.textContent = err.message || 'Could not fetch weather. Please try again.';
+        } finally {
+          loadEl.style.display = 'none';
+        }
+      }
+
+      document.getElementById('search-btn').addEventListener('click', handleSearch);
+      document.getElementById('city-input').addEventListener('keydown', e => {
+        if (e.key === 'Enter') handleSearch();
+      });
+    </script>
+  </body>
+</html>

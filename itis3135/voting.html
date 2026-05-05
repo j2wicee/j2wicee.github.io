@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joshua Evans's Capable Mouse ~ ITIS 3135 | Cheese Vote</title>
+    <script
+      src="https://lint.page/kit/4d0fe3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .vote-intro {
+        margin-bottom: 24px;
+      }
+      .candidate-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 24px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .candidate {
+        background-color: #e8ded4;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 14px 16px;
+      }
+      .candidate-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .candidate-name {
+        flex: 1;
+        font-family: "Oswald", sans-serif;
+        font-size: 1.1em;
+        color: #3b2f2a;
+        min-width: 160px;
+      }
+      .vote-count {
+        font-family: "Oswald", sans-serif;
+        font-size: 1em;
+        color: #4a4a4a;
+        white-space: nowrap;
+      }
+      .vote-bar-track {
+        height: 14px;
+        background-color: #f5f2ee;
+        border-radius: 7px;
+        overflow: hidden;
+        border: 1px solid #ccc;
+      }
+      .vote-bar-fill {
+        height: 100%;
+        background-color: #5f7a8a;
+        border-radius: 7px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+      .candidate-desc {
+        font-size: 0.88em;
+        color: #4a4a4a;
+        margin-top: 6px;
+        margin-bottom: 0;
+      }
+      .vote-controls {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      #total-display {
+        font-family: "Oswald", sans-serif;
+        color: #3b2f2a;
+        font-size: 1em;
+      }
+      .winner-banner {
+        background-color: #3b2f2a;
+        color: #f5f2ee;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 20px;
+        font-family: "Oswald", sans-serif;
+        font-size: 1.1em;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-include="components/header.html"></div>
+    <main>
+      <h2>Capable Mouse Cheese Vote</h2>
+      <div class="vote-intro">
+        <p>
+          Welcome to the <strong>2026 Capable Mouse Choice Awards!</strong>
+          Cast your vote for the greatest gadget ever to roll out of the
+          workshop. Votes are saved to your browser — share the page to see
+          what the community thinks!
+        </p>
+      </div>
+      <div class="winner-banner" id="winner-banner" aria-live="polite"></div>
+      <ul class="candidate-list" id="candidate-list" aria-label="Voting candidates"></ul>
+      <div class="vote-controls">
+        <span id="total-display">Total votes: 0</span>
+        <button id="reset-btn">Reset All Votes</button>
+      </div>
+    </main>
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+    <script>
+      const CANDIDATES = [
+        {
+          id: 'cheese-cpu',
+          name: 'Cheese CPU',
+          desc: 'A revolutionary processor that converts cheese energy into raw computing power.'
+        },
+        {
+          id: 'nano-laptop',
+          name: 'Nano Coding Laptop',
+          desc: 'A miniature laptop built for mouse-sized engineers coding on the go.'
+        },
+        {
+          id: 'crumb-tracker',
+          name: 'Wireless Crumb Tracker',
+          desc: 'Detects and maps nearby crumbs using wireless signals — snack-finding made scientific.'
+        },
+        {
+          id: 'ai-analyzer',
+          name: 'AI Cheese Analyzer',
+          desc: 'An AI system that evaluates cheese quality and energy potential with uncanny accuracy.'
+        },
+        {
+          id: 'debug-kit',
+          name: 'Debugging Toolkit',
+          desc: 'Specialized tools for hunting down bugs in both hardware and software.'
+        }
+      ];
+
+      const STORAGE_KEY = 'capableMouseVotes';
+
+      function loadVotes() {
+        try {
+          const saved = localStorage.getItem(STORAGE_KEY);
+          return saved ? JSON.parse(saved) : {};
+        } catch (_) {
+          return {};
+        }
+      }
+
+      function saveVotes(votes) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(votes));
+      }
+
+      let votes = loadVotes();
+
+      function getVote(id) { return votes[id] || 0; }
+
+      function totalVotes() {
+        return CANDIDATES.reduce((sum, c) => sum + getVote(c.id), 0);
+      }
+
+      function renderAll() {
+        const total = totalVotes();
+        document.getElementById('total-display').textContent =
+          'Total votes: ' + total;
+
+        CANDIDATES.forEach(c => {
+          const count = getVote(c.id);
+          const pct = total > 0 ? Math.round((count / total) * 100) : 0;
+          const countEl = document.getElementById('count-' + c.id);
+          const barEl = document.getElementById('bar-' + c.id);
+          if (countEl) countEl.textContent = count + ' vote' + (count !== 1 ? 's' : '') + ' (' + pct + '%)';
+          if (barEl) barEl.style.width = pct + '%';
+        });
+
+        updateWinner(total);
+      }
+
+      function updateWinner(total) {
+        const banner = document.getElementById('winner-banner');
+        if (total === 0) { banner.style.display = 'none'; return; }
+        let winner = CANDIDATES[0];
+        CANDIDATES.forEach(c => {
+          if (getVote(c.id) > getVote(winner.id)) winner = c;
+        });
+        banner.style.display = 'block';
+        banner.textContent =
+          '🏆 Current leader: ' + winner.name + ' with ' + getVote(winner.id) + ' vote' + (getVote(winner.id) !== 1 ? 's' : '') + '!';
+      }
+
+      function buildList() {
+        const list = document.getElementById('candidate-list');
+        list.innerHTML = '';
+        CANDIDATES.forEach(c => {
+          const li = document.createElement('li');
+          li.className = 'candidate';
+          li.innerHTML =
+            '<div class="candidate-header">' +
+              '<span class="candidate-name">' + c.name + '</span>' +
+              '<button type="button" onclick="castVote(\'' + c.id + '\')" aria-label="Vote for ' + c.name + '">Vote</button>' +
+              '<span class="vote-count" id="count-' + c.id + '">0 votes (0%)</span>' +
+            '</div>' +
+            '<div class="vote-bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="' + c.name + ' vote percentage">' +
+              '<div class="vote-bar-fill" id="bar-' + c.id + '"></div>' +
+            '</div>' +
+            '<p class="candidate-desc">' + c.desc + '</p>';
+          list.appendChild(li);
+        });
+        renderAll();
+      }
+
+      function castVote(id) {
+        votes[id] = (votes[id] || 0) + 1;
+        saveVotes(votes);
+        renderAll();
+      }
+
+      document.getElementById('reset-btn').addEventListener('click', () => {
+        votes = {};
+        saveVotes(votes);
+        renderAll();
+      });
+
+      buildList();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joshua Evans's Capable Mouse ~ ITIS 3135 | Markdown Converter</title>
+    <script
+      src="https://lint.page/kit/4d0fe3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .converter-layout {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .converter-panel {
+        flex: 1;
+        min-width: 280px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .converter-panel > span {
+        font-family: "Oswald", sans-serif;
+        color: #3b2f2a;
+        font-size: 1.05em;
+      }
+      #markdown-input {
+        width: 100%;
+        height: 320px;
+        padding: 10px;
+        font-family: monospace;
+        font-size: 0.88em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+        background-color: #faf8f5;
+        color: #4a4a4a;
+        box-sizing: border-box;
+      }
+      #html-output {
+        min-height: 320px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        overflow-y: auto;
+        box-sizing: border-box;
+        line-height: 1.6;
+      }
+      #html-output h3,
+      #html-output h4,
+      #html-output h5,
+      #html-output h6 {
+        margin-top: 0.8em;
+        margin-bottom: 0.3em;
+        color: #3b2f2a;
+        font-family: "Oswald", sans-serif;
+      }
+      #html-output blockquote {
+        border-left: 4px solid #5f7a8a;
+        margin: 10px 0;
+        padding: 6px 12px;
+        background: #f0ede9;
+        color: #4a4a4a;
+        font-style: italic;
+      }
+      #html-output code {
+        background: #f0ede9;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+      #html-output pre {
+        background: #f0ede9;
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      #html-output pre code {
+        background: none;
+        padding: 0;
+      }
+      .converter-controls {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-include="components/header.html"></div>
+    <main>
+      <h2>Capable Mouse Markdown Converter</h2>
+      <p>
+        Convert workshop notes and cheese recipes from Markdown to HTML —
+        powered by the Capable Mouse Nano Coding Engine.
+        Headings start at <code>&lt;h3&gt;</code> to respect the page structure.
+      </p>
+      <div class="converter-controls">
+        <button id="clear-btn">Clear</button>
+        <button id="sample-btn">Load Sample Note</button>
+      </div>
+      <div class="converter-layout">
+        <div class="converter-panel">
+          <span id="input-label">Markdown Input</span>
+          <textarea
+            id="markdown-input"
+            aria-labelledby="input-label"
+            placeholder="Type your Markdown here…"
+          ></textarea>
+        </div>
+        <div class="converter-panel">
+          <span>HTML Preview</span>
+          <div id="html-output" aria-live="polite" aria-label="HTML preview"></div>
+        </div>
+      </div>
+    </main>
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+    <script>
+      const SAMPLE = `# Workshop Log — Day 42
+
+## Today's Experiments
+
+Welcome to the **Capable Mouse** lab! Highlights for the day:
+
+- Upgraded the *Cheese CPU* to firmware v3.0
+- Debugged the **Wireless Crumb Tracker** firmware
+- Calibrated the \`AI Cheese Analyzer\` neural weights
+
+## Optimal Cheese Fuel Formula
+
+> "The finest Swiss fuels the finest circuits." — Capable Mouse
+
+### Preparation Steps
+
+1. Select a **Grade-A** cheese wedge (aged 6+ months)
+2. Insert into the \`Cheese CPU\` fuel slot
+3. Run \`diagnostics.exe --full\`
+4. Enjoy *peak computational performance*
+
+## Useful Links
+
+Visit [Capable Mouse Workshop](https://j2wicee.github.io) for the full gadget catalog.
+
+## Diagnostic Snippet
+
+\`\`\`
+function analyzeCheese(type) {
+  const ratings = { swiss: 100, gouda: 88, cheddar: 95 };
+  return ratings[type] ?? 70;
+}
+\`\`\`
+
+---
+
+*End of daily log.*`;
+
+      function applyInline(text) {
+        const codes = [];
+        text = text.replace(/`([^`]+)`/g, (_, c) => {
+          const safe = c.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          codes.push('<code>' + safe + '</code>');
+          return '\x01' + (codes.length - 1) + '\x01';
+        });
+        text = text.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" />');
+        text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+        text = text.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+        text = text.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        text = text.replace(/\*(.+?)\*/g, '<em>$1</em>');
+        text = text.replace(/_(.+?)_/g, '<em>$1</em>');
+        text = text.replace(/\x01(\d+)\x01/g, (_, i) => codes[+i]);
+        return text;
+      }
+
+      function parseMarkdown(md) {
+        const blocks = [];
+        md = md.replace(/```[\w]*\n?([\s\S]*?)```/g, (_, code) => {
+          const safe = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+          blocks.push('<pre><code>' + safe + '</code></pre>');
+          return '\x00' + (blocks.length - 1) + '\x00';
+        });
+
+        const lines = md.split('\n');
+        const out = [];
+        let inUl = false;
+        let inOl = false;
+        let inBq = false;
+
+        function closeLists() {
+          if (inUl) { out.push('</ul>'); inUl = false; }
+          if (inOl) { out.push('</ol>'); inOl = false; }
+        }
+        function closeBq() {
+          if (inBq) { out.push('</blockquote>'); inBq = false; }
+        }
+
+        for (const raw of lines) {
+          const line = raw;
+
+          if (/\x00\d+\x00/.test(line)) {
+            closeLists(); closeBq();
+            out.push(line.replace(/\x00(\d+)\x00/, (_, i) => blocks[+i]));
+            continue;
+          }
+
+          const hm = line.match(/^(#{1,6})\s+(.+)$/);
+          if (hm) {
+            closeLists(); closeBq();
+            const lvl = Math.min(hm[1].length + 2, 6);
+            out.push('<h' + lvl + '>' + applyInline(hm[2]) + '</h' + lvl + '>');
+            continue;
+          }
+
+          if (/^---+$/.test(line.trim())) {
+            closeLists(); closeBq();
+            out.push('<hr />');
+            continue;
+          }
+
+          const bqm = line.match(/^>\s*(.*)$/);
+          if (bqm) {
+            closeLists();
+            if (!inBq) { out.push('<blockquote>'); inBq = true; }
+            if (bqm[1].trim()) out.push('<p>' + applyInline(bqm[1]) + '</p>');
+            continue;
+          }
+          closeBq();
+
+          const ulm = line.match(/^[-*+]\s+(.+)$/);
+          if (ulm) {
+            if (inOl) { out.push('</ol>'); inOl = false; }
+            if (!inUl) { out.push('<ul>'); inUl = true; }
+            out.push('<li>' + applyInline(ulm[1]) + '</li>');
+            continue;
+          }
+          if (inUl) { out.push('</ul>'); inUl = false; }
+
+          const olm = line.match(/^\d+\.\s+(.+)$/);
+          if (olm) {
+            if (inUl) { out.push('</ul>'); inUl = false; }
+            if (!inOl) { out.push('<ol>'); inOl = true; }
+            out.push('<li>' + applyInline(olm[1]) + '</li>');
+            continue;
+          }
+          if (inOl) { out.push('</ol>'); inOl = false; }
+
+          if (line.trim() === '') continue;
+
+          out.push('<p>' + applyInline(line) + '</p>');
+        }
+
+        closeLists(); closeBq();
+        return out.join('\n');
+      }
+
+      const inputEl = document.getElementById('markdown-input');
+      const outputEl = document.getElementById('html-output');
+
+      inputEl.addEventListener('input', () => {
+        outputEl.innerHTML = parseMarkdown(inputEl.value);
+      });
+
+      document.getElementById('clear-btn').addEventListener('click', () => {
+        inputEl.value = '';
+        outputEl.innerHTML = '';
+      });
+
+      document.getElementById('sample-btn').addEventListener('click', () => {
+        inputEl.value = SAMPLE;
+        outputEl.innerHTML = parseMarkdown(SAMPLE);
+      });
+    </script>
+  </body>
+</html>

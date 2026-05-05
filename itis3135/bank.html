@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joshua Evans's Capable Mouse ~ ITIS 3135 | Cheese Bank</title>
+    <script
+      src="https://lint.page/kit/4d0fe3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .bank-layout {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .bank-panel {
+        flex: 1;
+        min-width: 260px;
+      }
+      .balance-card {
+        background-color: #3b2f2a;
+        color: #f5f2ee;
+        border-radius: 10px;
+        padding: 20px 24px;
+        margin-bottom: 24px;
+        max-width: 340px;
+      }
+      .balance-label {
+        font-family: "Oswald", sans-serif;
+        font-size: 0.95em;
+        opacity: 0.8;
+        margin: 0 0 6px 0;
+      }
+      .balance-amount {
+        font-family: "Oswald", sans-serif;
+        font-size: 2.2em;
+        margin: 0;
+        color: #f5f2ee;
+      }
+      .balance-sub {
+        font-size: 0.8em;
+        opacity: 0.7;
+        margin: 4px 0 0 0;
+      }
+      .bank-form {
+        background-color: #e8ded4;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 16px;
+        max-width: 340px;
+      }
+      .bank-form h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+      }
+      .bank-form label {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-size: 0.9em;
+        color: #3b2f2a;
+        margin-bottom: 10px;
+      }
+      .bank-form input[type="number"],
+      .bank-form input[type="text"] {
+        padding: 7px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: "Libre Baskerville", serif;
+        font-size: 0.9em;
+        background-color: #faf8f5;
+        color: #4a4a4a;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .form-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .form-row label {
+        flex: 1;
+        min-width: 100px;
+      }
+      .msg {
+        font-size: 0.88em;
+        min-height: 1.2em;
+        margin-top: 6px;
+        padding: 6px 8px;
+        border-radius: 4px;
+      }
+      .msg.error {
+        background-color: #f4d4d4;
+        color: #7a2020;
+      }
+      .msg.success {
+        background-color: #d4e8d4;
+        color: #1a5c1a;
+      }
+      .history-panel {
+        flex: 2;
+        min-width: 280px;
+      }
+      .history-panel h3 {
+        margin-top: 0;
+      }
+      #history-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 0.88em;
+      }
+      #history-table th {
+        background-color: #e8ded4;
+        color: #3b2f2a;
+        font-family: "Oswald", sans-serif;
+      }
+      #history-table td,
+      #history-table th {
+        border: 1px solid #ccc;
+        padding: 8px 10px;
+        text-align: left;
+      }
+      .tx-deposit { color: #1a5c1a; font-weight: bold; }
+      .tx-withdraw { color: #7a2020; font-weight: bold; }
+      .tx-open { color: #3b2f2a; }
+      .bank-actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .empty-history {
+        color: #4a4a4a;
+        font-style: italic;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-include="components/header.html"></div>
+    <main>
+      <h2>Capable Mouse Cheese Bank</h2>
+      <p>
+        Secure banking for the modern mouse. Manage your Cheddar Credits (CC) —
+        the official currency of the Capable Mouse Workshop.
+      </p>
+      <div class="bank-layout">
+        <div class="bank-panel">
+          <div class="balance-card">
+            <p class="balance-label">Current Balance</p>
+            <p class="balance-amount" id="balance-display">CC 500.00</p>
+            <p class="balance-sub">Cheddar Credits · Capable Mouse Cheese Bank</p>
+          </div>
+
+          <div class="bank-form">
+            <h3>Deposit</h3>
+            <form id="deposit-form" novalidate>
+              <div class="form-row">
+                <label for="deposit-amount">
+                  Amount (CC)
+                  <input
+                    type="number"
+                    id="deposit-amount"
+                    name="deposit-amount"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="0.00"
+                    required
+                  />
+                </label>
+              </div>
+              <label for="deposit-desc">
+                Description
+                <input
+                  type="text"
+                  id="deposit-desc"
+                  name="deposit-desc"
+                  placeholder="e.g. Workshop earnings"
+                />
+              </label>
+              <button type="submit">Deposit</button>
+              <p class="msg" id="deposit-msg" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="bank-form">
+            <h3>Withdraw</h3>
+            <form id="withdraw-form" novalidate>
+              <div class="form-row">
+                <label for="withdraw-amount">
+                  Amount (CC)
+                  <input
+                    type="number"
+                    id="withdraw-amount"
+                    name="withdraw-amount"
+                    min="0.01"
+                    step="0.01"
+                    placeholder="0.00"
+                    required
+                  />
+                </label>
+              </div>
+              <label for="withdraw-desc">
+                Description
+                <input
+                  type="text"
+                  id="withdraw-desc"
+                  name="withdraw-desc"
+                  placeholder="e.g. Cheese market purchase"
+                />
+              </label>
+              <button type="submit">Withdraw</button>
+              <p class="msg" id="withdraw-msg" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+
+        <div class="history-panel">
+          <h3>Transaction History</h3>
+          <div class="bank-actions">
+            <button id="reset-btn">Reset Account</button>
+          </div>
+          <table id="history-table" aria-label="Transaction history">
+            <thead>
+              <tr>
+                <th scope="col">Date &amp; Time</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Balance</th>
+              </tr>
+            </thead>
+            <tbody id="history-body">
+              <tr>
+                <td colspan="5" class="empty-history">No transactions yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+    <script>
+      const STORAGE_KEY = 'capableMouseBank';
+      const OPENING = 500;
+
+      function loadAccount() {
+        try {
+          const s = localStorage.getItem(STORAGE_KEY);
+          return s ? JSON.parse(s) : { balance: OPENING, transactions: [] };
+        } catch (_) {
+          return { balance: OPENING, transactions: [] };
+        }
+      }
+
+      function saveAccount() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(account));
+      }
+
+      let account = loadAccount();
+
+      function fmt(n) {
+        return 'CC ' + n.toFixed(2);
+      }
+
+      function renderBalance() {
+        document.getElementById('balance-display').textContent = fmt(account.balance);
+      }
+
+      function renderHistory() {
+        const tbody = document.getElementById('history-body');
+        tbody.innerHTML = '';
+        if (account.transactions.length === 0) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = '<td colspan="5" class="empty-history">No transactions yet.</td>';
+          tbody.appendChild(tr);
+          return;
+        }
+        [...account.transactions].reverse().forEach(tx => {
+          const tr = document.createElement('tr');
+          let typeClass = 'tx-open';
+          let sign = '';
+          if (tx.type === 'deposit') { typeClass = 'tx-deposit'; sign = '+'; }
+          if (tx.type === 'withdrawal') { typeClass = 'tx-withdraw'; sign = '-'; }
+          tr.innerHTML =
+            '<td>' + tx.date + '</td>' +
+            '<td class="' + typeClass + '">' + tx.type.charAt(0).toUpperCase() + tx.type.slice(1) + '</td>' +
+            '<td>' + (tx.desc || '—') + '</td>' +
+            '<td class="' + typeClass + '">' + sign + 'CC ' + Math.abs(tx.amount).toFixed(2) + '</td>' +
+            '<td>' + fmt(tx.balance) + '</td>';
+          tbody.appendChild(tr);
+        });
+      }
+
+      function addTransaction(type, amount, desc) {
+        account.transactions.push({
+          type,
+          amount,
+          desc,
+          balance: account.balance,
+          date: new Date().toLocaleString()
+        });
+      }
+
+      function showMsg(id, text, isError) {
+        const el = document.getElementById(id);
+        el.textContent = text;
+        el.className = 'msg ' + (isError ? 'error' : 'success');
+        setTimeout(() => { el.textContent = ''; el.className = 'msg'; }, 3500);
+      }
+
+      document.getElementById('deposit-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const raw = parseFloat(document.getElementById('deposit-amount').value);
+        const desc = document.getElementById('deposit-desc').value.trim();
+        if (isNaN(raw) || raw <= 0) {
+          showMsg('deposit-msg', 'Please enter a valid positive amount.', true);
+          return;
+        }
+        account.balance = Math.round((account.balance + raw) * 100) / 100;
+        addTransaction('deposit', raw, desc);
+        saveAccount();
+        renderBalance();
+        renderHistory();
+        showMsg('deposit-msg', 'Deposited CC ' + raw.toFixed(2) + ' successfully!', false);
+        document.getElementById('deposit-form').reset();
+      });
+
+      document.getElementById('withdraw-form').addEventListener('submit', e => {
+        e.preventDefault();
+        const raw = parseFloat(document.getElementById('withdraw-amount').value);
+        const desc = document.getElementById('withdraw-desc').value.trim();
+        if (isNaN(raw) || raw <= 0) {
+          showMsg('withdraw-msg', 'Please enter a valid positive amount.', true);
+          return;
+        }
+        if (raw > account.balance) {
+          showMsg('withdraw-msg', 'Insufficient Cheddar Credits! Balance: ' + fmt(account.balance), true);
+          return;
+        }
+        account.balance = Math.round((account.balance - raw) * 100) / 100;
+        addTransaction('withdrawal', raw, desc);
+        saveAccount();
+        renderBalance();
+        renderHistory();
+        showMsg('withdraw-msg', 'Withdrew CC ' + raw.toFixed(2) + ' successfully!', false);
+        document.getElementById('withdraw-form').reset();
+      });
+
+      document.getElementById('reset-btn').addEventListener('click', () => {
+        if (!confirm('Reset account to CC ' + OPENING.toFixed(2) + '? All history will be cleared.')) return;
+        account = { balance: OPENING, transactions: [] };
+        saveAccount();
+        renderBalance();
+        renderHistory();
+      });
+
+      renderBalance();
+      renderHistory();
+    </script>
+  </body>
+</html>

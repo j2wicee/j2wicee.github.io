@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Joshua Evans's Capable Mouse ~ ITIS 3135 | Drum Machine</title>
+    <script
+      src="https://lint.page/kit/4d0fe3.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles/default.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .drum-machine {
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .drum-display {
+        background-color: #3b2f2a;
+        color: #f5f2ee;
+        font-family: "Oswald", sans-serif;
+        font-size: 1.3em;
+        text-align: center;
+        padding: 14px 10px;
+        border-radius: 8px;
+        margin-bottom: 18px;
+        min-height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .drum-pads {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .drum-pad {
+        aspect-ratio: 1;
+        background-color: #e8ded4;
+        border: 2px solid #3b2f2a;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-family: "Oswald", sans-serif;
+        transition: background-color 0.08s, transform 0.08s;
+        user-select: none;
+        padding: 0;
+      }
+      .drum-pad:focus {
+        outline: 3px solid #5f7a8a;
+        outline-offset: 2px;
+      }
+      .pad-key {
+        font-size: 1.6em;
+        font-weight: bold;
+        color: #3b2f2a;
+        line-height: 1;
+      }
+      .pad-name {
+        font-size: 0.68em;
+        color: #5f7a8a;
+        text-align: center;
+        padding: 0 6px;
+        line-height: 1.2;
+      }
+      .drum-pad.active {
+        background-color: #5f7a8a;
+        transform: scale(0.93);
+      }
+      .drum-pad.active .pad-key,
+      .drum-pad.active .pad-name {
+        color: #fff;
+      }
+      .drum-controls {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .drum-controls label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-direction: row;
+        color: #3b2f2a;
+        font-family: "Oswald", sans-serif;
+      }
+      #volume-slider {
+        width: 120px;
+        accent-color: #3b2f2a;
+      }
+      .keyboard-hint {
+        font-size: 0.85em;
+        color: #4a4a4a;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-include="components/header.html"></div>
+    <main>
+      <h2>Capable Mouse Drum Machine</h2>
+      <p>
+        Straight from the workshop floor — click a pad or press the matching key
+        to trigger a Capable Mouse sound effect.
+      </p>
+      <div class="drum-machine">
+        <div class="drum-display" id="drum-display" aria-live="polite">
+          Ready — press a pad!
+        </div>
+        <div class="drum-pads" role="group" aria-label="Drum pads">
+          <button class="drum-pad" data-key="Q" aria-label="Q — Mouse Squeak">
+            <span class="pad-key">Q</span>
+            <span class="pad-name">Mouse Squeak</span>
+          </button>
+          <button class="drum-pad" data-key="W" aria-label="W — Cheese Chomp">
+            <span class="pad-key">W</span>
+            <span class="pad-name">Cheese Chomp</span>
+          </button>
+          <button class="drum-pad" data-key="E" aria-label="E — Pitter Patter">
+            <span class="pad-key">E</span>
+            <span class="pad-name">Pitter Patter</span>
+          </button>
+          <button class="drum-pad" data-key="A" aria-label="A — CPU Beep">
+            <span class="pad-key">A</span>
+            <span class="pad-name">CPU Beep</span>
+          </button>
+          <button class="drum-pad" data-key="S" aria-label="S — Workshop Buzz">
+            <span class="pad-key">S</span>
+            <span class="pad-name">Workshop Buzz</span>
+          </button>
+          <button class="drum-pad" data-key="D" aria-label="D — Gear Click">
+            <span class="pad-key">D</span>
+            <span class="pad-name">Gear Click</span>
+          </button>
+          <button class="drum-pad" data-key="Z" aria-label="Z — Crumb Crunch">
+            <span class="pad-key">Z</span>
+            <span class="pad-name">Crumb Crunch</span>
+          </button>
+          <button class="drum-pad" data-key="X" aria-label="X — Circuit Pop">
+            <span class="pad-key">X</span>
+            <span class="pad-name">Circuit Pop</span>
+          </button>
+          <button class="drum-pad" data-key="C" aria-label="C — Gadget Whirr">
+            <span class="pad-key">C</span>
+            <span class="pad-name">Gadget Whirr</span>
+          </button>
+        </div>
+        <div class="drum-controls">
+          <label for="volume-slider">
+            Volume:
+            <input
+              type="range"
+              id="volume-slider"
+              min="0"
+              max="1"
+              step="0.05"
+              value="0.6"
+            />
+          </label>
+        </div>
+        <p class="keyboard-hint">
+          Keyboard shortcuts: Q W E (top row) &nbsp;|&nbsp; A S D (middle)
+          &nbsp;|&nbsp; Z X C (bottom)
+        </p>
+      </div>
+    </main>
+    <div data-include="components/footer.html"></div>
+    <script src="scripts/include.min.js"></script>
+    <script>
+      let audioCtx = null;
+      const volumeSlider = document.getElementById('volume-slider');
+      const display = document.getElementById('drum-display');
+
+      function ctx() {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        return audioCtx;
+      }
+
+      function vol() { return parseFloat(volumeSlider.value); }
+
+      function makeGain(v) {
+        const g = ctx().createGain();
+        g.gain.value = v * vol();
+        g.connect(ctx().destination);
+        return g;
+      }
+
+      const sounds = {
+        Q: { name: 'Mouse Squeak', play() {
+          const o = ctx().createOscillator(), g = makeGain(0.5);
+          o.connect(g); o.type = 'sine';
+          const t = ctx().currentTime;
+          o.frequency.setValueAtTime(900, t);
+          o.frequency.exponentialRampToValueAtTime(1800, t + 0.04);
+          o.frequency.exponentialRampToValueAtTime(550, t + 0.18);
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+          o.start(t); o.stop(t + 0.22);
+        }},
+        W: { name: 'Cheese Chomp', play() {
+          const t = ctx().currentTime;
+          const buf = ctx().createBuffer(1, ctx().sampleRate * 0.14, ctx().sampleRate);
+          const d = buf.getChannelData(0);
+          for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+          const src = ctx().createBufferSource(); src.buffer = buf;
+          const flt = ctx().createBiquadFilter(); flt.type = 'lowpass'; flt.frequency.value = 700;
+          const g = makeGain(0.55);
+          src.connect(flt); flt.connect(g); src.start(t);
+          const o = ctx().createOscillator(), og = makeGain(0.6);
+          o.connect(og); o.type = 'sine';
+          o.frequency.setValueAtTime(110, t);
+          o.frequency.exponentialRampToValueAtTime(38, t + 0.14);
+          og.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
+          o.start(t); o.stop(t + 0.14);
+        }},
+        E: { name: 'Pitter Patter', play() {
+          for (let i = 0; i < 7; i++) {
+            const t = ctx().currentTime + i * 0.038;
+            const o = ctx().createOscillator(), g = ctx().createGain();
+            o.connect(g); g.connect(ctx().destination);
+            o.type = 'square'; o.frequency.value = 380 + Math.random() * 180;
+            g.gain.setValueAtTime(0, t);
+            g.gain.linearRampToValueAtTime(0.28 * vol(), t + 0.008);
+            g.gain.exponentialRampToValueAtTime(0.001, t + 0.028);
+            o.start(t); o.stop(t + 0.03);
+          }
+        }},
+        A: { name: 'CPU Beep', play() {
+          const o = ctx().createOscillator(), g = makeGain(0.4);
+          o.connect(g); o.type = 'sine'; o.frequency.value = 880;
+          const t = ctx().currentTime;
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.13);
+          o.start(t); o.stop(t + 0.14);
+        }},
+        S: { name: 'Workshop Buzz', play() {
+          const o = ctx().createOscillator(), g = makeGain(0.3);
+          o.connect(g); o.type = 'sawtooth'; o.frequency.value = 110;
+          const t = ctx().currentTime;
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
+          o.start(t); o.stop(t + 0.3);
+        }},
+        D: { name: 'Gear Click', play() {
+          const o = ctx().createOscillator(), g = makeGain(0.55);
+          o.connect(g); o.type = 'sine'; o.frequency.value = 1400;
+          const t = ctx().currentTime;
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.05);
+          o.start(t); o.stop(t + 0.06);
+        }},
+        Z: { name: 'Crumb Crunch', play() {
+          const t = ctx().currentTime;
+          const buf = ctx().createBuffer(1, ctx().sampleRate * 0.11, ctx().sampleRate);
+          const d = buf.getChannelData(0);
+          for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 0.4);
+          const src = ctx().createBufferSource(); src.buffer = buf;
+          const flt = ctx().createBiquadFilter(); flt.type = 'bandpass';
+          flt.frequency.value = 2200; flt.Q.value = 1.8;
+          const g = makeGain(0.65);
+          src.connect(flt); flt.connect(g); src.start(t);
+        }},
+        X: { name: 'Circuit Pop', play() {
+          const o = ctx().createOscillator(), g = makeGain(0.55);
+          o.connect(g); o.type = 'sine';
+          const t = ctx().currentTime;
+          o.frequency.setValueAtTime(420, t);
+          o.frequency.exponentialRampToValueAtTime(80, t + 0.07);
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.08);
+          o.start(t); o.stop(t + 0.08);
+        }},
+        C: { name: 'Gadget Whirr', play() {
+          const t = ctx().currentTime;
+          const mod = ctx().createOscillator(), modG = ctx().createGain();
+          const carr = ctx().createOscillator(), g = makeGain(0.4);
+          mod.connect(modG); modG.connect(carr.frequency);
+          carr.connect(g);
+          mod.frequency.value = 9; modG.gain.value = 65;
+          carr.type = 'sine'; carr.frequency.value = 440;
+          g.gain.setValueAtTime(0.4 * vol(), t);
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.38);
+          mod.start(t); carr.start(t);
+          mod.stop(t + 0.4); carr.stop(t + 0.4);
+        }}
+      };
+
+      function triggerPad(key) {
+        const s = sounds[key];
+        if (!s) return;
+        s.play();
+        display.textContent = s.name;
+        const pad = document.querySelector('[data-key="' + key + '"]');
+        if (!pad) return;
+        pad.classList.add('active');
+        setTimeout(() => pad.classList.remove('active'), 160);
+      }
+
+      document.querySelectorAll('.drum-pad').forEach(pad => {
+        pad.addEventListener('click', () => triggerPad(pad.dataset.key));
+        pad.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            triggerPad(pad.dataset.key);
+          }
+        });
+      });
+
+      document.addEventListener('keydown', e => {
+        const key = e.key.toUpperCase();
+        if (sounds[key]) {
+          e.preventDefault();
+          triggerPad(key);
+        }
+      });
+    </script>
+  </body>
+</html>
